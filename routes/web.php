@@ -22,8 +22,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin',[App\Http\Controllers\AdminController::class,'index'])->name('admin.home')->middleware('admin');
-Route::get('/perawat',[App\Http\Controllers\PerawatController::class,'index'])->name('perawat.home')->middleware('perawat');
-Route::get('/dokter',[App\Http\Controllers\DokterController::class,'index'])->name('dokter.home')->middleware('dokter');
-
-
+Route::middleware(['auth', 'admin'])->group(function () {
+  
+    Route::get('/admin',[App\Http\Controllers\AdminController::class,'index'])->name('admin.home');
+});
+Route::middleware(['auth', 'perawat'])->group(function () {
+  
+    Route::get('/perawat',[App\Http\Controllers\PerawatController::class,'index'])->name('perawat.home');
+});
+Route::middleware(['auth', 'dokter'])->group(function () {
+  
+    Route::get('/dokter',[App\Http\Controllers\DokterController::class,'index'])->name('dokter.home');
+});
