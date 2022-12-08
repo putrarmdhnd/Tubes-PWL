@@ -20,6 +20,6 @@ class Perawat
             return $next($request);
         }
 
-        return redirect('welcome')->with('error', 'Anda tidak memiliki akses sebagai Perawat');
+        return redirect('login')->with('error', 'Anda tidak memiliki akses sebagai Perawat');
     }
 }

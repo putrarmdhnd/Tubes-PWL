@@ -10,12 +10,6 @@
 
         <p>
             {{ $item['text'] }}
-
-            @isset($item['label'])
-                <span class="badge badge-{{ $item['label_color'] ?? 'primary' }} right">
-                    {{ $item['label'] }}
-                </span>
-            @endisset
         </p>
 
     </a>

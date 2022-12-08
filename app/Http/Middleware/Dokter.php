@@ -20,6 +20,6 @@ class Dokter
             return $next($request);
         }
 
-        return redirect('home')->with('error', 'Anda tidak memiliki akses sebagai Dokter');
+        return redirect('login')->with('error', 'Anda tidak memiliki akses sebagai Dokter');
     }
 }

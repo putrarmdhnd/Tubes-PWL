@@ -20,6 +20,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('welcome')->with('error', 'Anda tidak memiliki akses sebagai Admin');
+        return redirect('login')->with('error', 'Anda tidak memiliki akses sebagai Admin');
     }
 }
