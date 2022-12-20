@@ -25,7 +25,7 @@
                with font-awesome or any other icon font library -->
                 @if ($user->roles_id == 1)
                     <li class="nav-item pt-3">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.input')}}" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Data User
@@ -34,7 +34,7 @@
                     </li>
                 @elseif($user->roles_id == 2)
                     <li class="nav-item pt-3">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('perawat.input') }}" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Data Pasien

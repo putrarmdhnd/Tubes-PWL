@@ -25,10 +25,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth', 'admin'])->group(function () {
   
     Route::get('/admin',[App\Http\Controllers\AdminController::class,'index'])->name('admin.home');
+    Route::get('/admin/input-user',[App\Http\Controllers\AdminController::class,'input'])->name('admin.input');
 });
 Route::middleware(['auth', 'perawat'])->group(function () {
   
     Route::get('/perawat',[App\Http\Controllers\PerawatController::class,'index'])->name('perawat.home');
+    Route::get('/perawat/input-pasien',[App\Http\Controllers\PerawatController::class,'input'])->name('perawat.input');
+
 });
 Route::middleware(['auth', 'dokter'])->group(function () {
   
