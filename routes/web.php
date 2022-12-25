@@ -29,6 +29,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'perawat'])->group(function () {
   
     Route::get('/perawat',[App\Http\Controllers\PerawatController::class,'index'])->name('perawat.home');
+    Route::get('/email', [App\Http\Controllers\PerawatController::class,'sentMail'])->name('email');
 });
 Route::middleware(['auth', 'dokter'])->group(function () {
   
