@@ -17,19 +17,17 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->date('Tlahir');
-            $table->integer('umur');
-            $table->integer('NoKtp');
-            $table->integer('NoBpjs');
+            $table->bigInteger('umur');
+            $table->bigInteger('NoKtp');
             $table->string('jk');
             $table->string('agama');
             $table->string('goldar');
-            $table->string('PenTrakhir');
             $table->string('pekerjaan');
-            $table->integer('NoTlp');
+            $table->bigInteger('NoTlp');
             $table->string('email')->unique();
-            $table->string('metodeP');
-            $table->string('Ttinggal');
-            $table->string('AnggotaKel');
+            $table->string('alamat');
+            $table->bigInteger('TBadan');
+            $table->bigInteger('BBadan');
             $table->timestamps();
         });
     }
