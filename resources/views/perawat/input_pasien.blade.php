@@ -9,7 +9,7 @@
         <div class="card-header">{{ __('Pengelolaan Buku') }}</div>
         <div class="card-body">
             <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
-            <a href="" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            <a href="{{ route('perawat.print.pasien')}}" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
             <table id="table-data" class="table table-bordered">
                 <thead>
                     <tr class="text-center">
@@ -40,8 +40,8 @@
                         <td>{{$PendataanPasien->BBadan}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btn-edit-buku" class="btn btn-success " data-toggle="modal" data-target="#editBukuModal" data-id="">Edit</button>
-                                <button type="button" class="btn btn-danger" onclick="deleteConfirmation()">Hapus</button>
+                                <button type="button" id="btn-edit-pasien" class="btn btn-success " data-toggle="modal" data-target="#editBukuModal" data-id="{{ $PendataanPasien->id }}">Edit</button>
+                                <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$PendataanPasien->id}}', '{{$PendataanPasien->nama}}')">Hapus</button>
                             </div>
                         </td>
                     </tr>
@@ -170,6 +170,7 @@
         </div>
     </div>
 </div>
+
 <!--  UPDATE DATA BUKU MODAL   -->
 <div class="modal fade" id="editBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -328,11 +329,11 @@
             });
         });
         
-        function deleteConfirmation(npm, judul) {
+        function deleteConfirmation(npm, nama) {
         swal.fire({
             title: "Hapus?",
             type: 'warning',
-            text: "Apakah anda yakin akan menghapus data buku dengan judul " + judul + "!?",
+            text: "Apakah anda yakin akan menghapus data pasien dengan nama " + nama + "!?",
 
             showCancelButton: !0,
             confirmButtonText: "Ya, lakukan!",

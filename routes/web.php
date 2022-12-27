@@ -37,6 +37,8 @@ Route::middleware(['auth', 'perawat'])->group(function () {
     Route::get('perawat/ajaxadmin/dataPasien/{id}', [App\Http\Controllers\PerawatController::class, 'getDataPasien']);
 
     Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien'])->name('admin.book.delete');
+
+    Route::get('perawat/print_data_pasien', [App\Http\Controllers\PerawatController::class, 'print_data_pasien'])->name('perawat.print.pasien');
 });
 Route::middleware(['auth', 'dokter'])->group(function () {
   
