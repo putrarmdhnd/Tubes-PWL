@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\PendataanPasien;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+use App\Models\User;
+
 
 class PerawatController extends Controller
 {
@@ -14,10 +18,12 @@ class PerawatController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
         return view('home', compact('user'));
     }
+
 
     public function pasiendata(){
         $user   = Auth::user();

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\LoginNotification;
 
 class LoginController extends Controller
 {
@@ -49,13 +52,22 @@ class LoginController extends Controller
 
         if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password'])))
         {
+            $user = User::where('email', $request->email)->first();
+            $admin = User::where('roles_id', 1)->get();
+
             if(auth()->user()->roles_id == 1) {
                 return redirect()->route('admin.home');
             }
             else if(auth()->user()->roles_id == 2) {
+
+                Notification::send($admin, new LoginNotification($user));
+
                 return redirect()->route('perawat.home');
             }
             else if(auth()->user()->roles_id == 3){
+                
+                Notification::send($admin, new LoginNotification($user));
+                
                 return redirect()->route('dokter.home');
             }   
         }

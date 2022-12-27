@@ -30,6 +30,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'perawat'])->group(function () {
   
     Route::get('/perawat',[App\Http\Controllers\PerawatController::class,'index'])->name('perawat.home');
+
     Route::get('/perawat/input-pasien',[App\Http\Controllers\PerawatController::class,'pasiendata'])->name('perawat.input');
     Route::post('/perawat/submit-pasien',[App\Http\Controllers\PerawatController::class,'submit_data'])->name('perawat.submit');
 
@@ -38,7 +39,12 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
     Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien'])->name('admin.book.delete');
 
+<<<<<<< HEAD
     Route::get('perawat/print_data_pasien', [App\Http\Controllers\PerawatController::class, 'print_data_pasien'])->name('perawat.print.pasien');
+=======
+    Route::get('/email', [App\Http\Controllers\PerawatController::class,'sentMail'])->name('email');
+
+>>>>>>> b941843a9aa4132e47351599da4b588178739e3a
 });
 Route::middleware(['auth', 'dokter'])->group(function () {
   
