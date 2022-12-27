@@ -101,7 +101,6 @@ class PerawatController extends Controller
             'BBadan' => 'required',
         ]);
 
-        $Pasien = new PendataanPasien;
         $pasien->nama = $req->get('nama');
         $pasien->Tlahir = $req->get('Tlahir');
         $pasien->umur = $req->get('umur');
@@ -111,7 +110,7 @@ class PerawatController extends Controller
         $pasien->goldar = $req->get('goldar');
         $pasien->pekerjaan = $req->get('pekerjaan');
         $pasien->NoKtp = $req->get('NoKtp');
-        $pasien->eamail = $req->get('email');
+        $pasien->email = $req->get('email');
         $pasien->alamat = $req->get('alamat');
         $pasien->TBadan = $req->get('TBadan');
         $pasien->BBadan = $req->get('BBadan');
@@ -134,12 +133,19 @@ class PerawatController extends Controller
         $pasien->delete();
 
         $success = true;
-        $message = "Data buku berhasil dihapus";
+        $message = "Data pasien berhasil dihapus";
 
         return response()->json([
             'success' => $success,
             'message' => $message,
         ]);
+    }
+    
+    public function print_data_pasien(){
+        $pasien = PendataanPasien::all();
+
+        $pdf = PDF::loadview('print_data_pasien',['pasien'=>$pasien]);
+        return $pdf->download('data_pasien.pdf');
     }
 
 }
