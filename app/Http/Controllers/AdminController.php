@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\RegisteredUserNotification;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -14,13 +15,16 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
         return view('home', compact('user'));
     }
 
-    public function input(){
+    public function input()
+    {
         $user = Auth::user();
-        return view('Admin.input_user', compact('user'));
+        $users = User::all();
+        return view('admin.input_user', compact('user', 'users'));
     }
 }
