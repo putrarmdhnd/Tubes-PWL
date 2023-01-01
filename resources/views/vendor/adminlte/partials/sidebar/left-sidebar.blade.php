@@ -24,40 +24,40 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 @if ($user->roles_id == 1)
-                    <li class="nav-item pt-3">
-                        <a href="{{ route('admin.input')}}" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Data User
-                            </p>
-                        </a>
-                    </li>
+                <li class="nav-item pt-3">
+                    <a href="{{ route('admin.input')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Data User
+                        </p>
+                    </a>
+                </li>
                 @elseif($user->roles_id == 2)
-                    <li class="nav-item pt-3">
-                        <a href="{{ route('perawat.input') }}" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Data Pasien
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item pt-3">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Data Pemeriksaan
-                            </p>
-                        </a>
-                    </li>
+                <li class="nav-item pt-3">
+                    <a href="{{ route('perawat.input') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Data Pasien
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item pt-3">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Data Pemeriksaan
+                        </p>
+                    </a>
+                </li>
                 @elseif($user->roles_id == 3)
-                    <li class="nav-item pt-3">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Pemeriksaan
-                            </p>
-                        </a>
-                    </li>
+                <li class="nav-item pt-3">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Pemeriksaan
+                        </p>
+                    </a>
+                </li>
                 @endif
             </ul>
         </nav>
