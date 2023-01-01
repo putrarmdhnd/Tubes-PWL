@@ -11,7 +11,7 @@
             <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
             <a href="{{ route('perawat.print.pasien')}}" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
             <a href="/recycle_bin" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
-            
+
             <table id="table-data" class="table table-bordered">
                 <thead>
                     <tr class="text-center">
@@ -19,7 +19,6 @@
                         <th>NAMA LENGKAP</th>
                         <th>UMUR</th>
                         <th>JENIS KELAMIN</th>
-                        <th>AGAMA</th>
                         <th>GOLONGAN DARAH</th>
                         <th>ALAMAT</th>
                         <th>TINGGI BADAN</th>
@@ -35,7 +34,6 @@
                         <td>{{$PendataanPasien->nama}}</td>
                         <td>{{$PendataanPasien->umur}}</td>
                         <td>{{$PendataanPasien->jk}}</td>
-                        <td>{{$PendataanPasien->agama}}</td>
                         <td>{{$PendataanPasien->goldar}}</td>
                         <td>{{$PendataanPasien->alamat}}</td>
                         <td>{{$PendataanPasien->TBadan}}</td>
@@ -69,12 +67,6 @@
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
                                 <input type="text" class="form-control" name="nama" id="nama" required />
-                        </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">    
-                                <label for="penulis">Tanggal Lahir</label>
-                                <input type="text" class="form-control" name="Tlahir" id="Tlahir" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -82,87 +74,72 @@
                                 <label for="tahun">Umur</label>
                                 <input type="text" class="form-control" name="umur" id="umur" required />
                             </div>
-                            </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="penerbit">Nomor KTP</label>
                                 <input type="text" class="form-control" name="NoKtp" id="NoKtp" required />
                             </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cover">Jenis Kelamin</label><br>
-                                    <select class="form-select " aria-label=".form-select-lg example" name="jk" id="jk" required>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Jenis Kelamin</label><br>
+                                <select class="form-select " aria-label=".form-select-lg example" name="jk" id="jk" required>
                                     <option selected>Pilih Jenis Kelamin</option>
                                     <option value="Laki_laki">Laki-laki</option>
                                     <option value="Perempuan">Perempuan</option>
-                                    </select>
-                                </div>
+                                </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cover">Agama</label><br>
-                                    <select class="form-select " aria-label=".form-select-lg example" name="agama" id="agama" required>
-                                    <option selected>Pilih Agama</option>
-                                    <option value="Islam">Islam</option>
-                                    <option value="Kristen">Kristen</option>
-                                     <option value="Khatolik">Khatolik</option>
-                                     <option value="Hindu">Hindu</option>
-                                     <option value="Budha">Budha</option>
-                                     <option value="Konghucu">Konghucu</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cover">Golongan Darah</label><br>
-                                    <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="goldar" required>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Golongan Darah</label><br>
+                                <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="goldar" required>
                                     <option selected>Pilih Golongan Darah</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
-                                     <option value="O">O</option>
-                                     <option value="AB">AB</option>
-                                    </select>
-                                </div>
+                                    <option value="O">O</option>
+                                    <option value="AB">AB</option>
+                                </select>
                             </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">Pekerjaan</label>
-                        <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" required />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Pekerjaan</label>
+                                <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">No Handphone</label>
+                                <input type="text" class="form-control" name="NoTlp" id="NoTlp" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Email</label>
+                                <input type="text" class="form-control" name="email" id="email" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">ALAMAT</label>
+                                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">TINGGI BADAN</label>
+                                <input type="text" class="form-control" name="TBadan" id="TBadan" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">BERAT BADAN</label>
+                                <input type="text" class="form-control" name="BBadan" id="BBadan" required />
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">No Handphone</label>
-                        <input type="text" class="form-control" name="NoTlp" id="NoTlp" required />
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">Email</label>
-                        <input type="text" class="form-control" name="email" id="email" required />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                    <label for="cover">ALAMAT</label>
-                    <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
-                    
-                </div>
-                </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">TINGGI BADAN</label>
-                        <input type="text" class="form-control" name="TBadan" id="TBadan" required />
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">BERAT BADAN</label>
-                        <input type="text" class="form-control" name="BBadan" id="BBadan" required />
-                    </div>
-                    </div>
-                </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -191,10 +168,10 @@
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
                                 <input type="text" class="form-control" name="nama" id="edit-nama" required />
-                        </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">    
+                            <div class="form-group">
                                 <label for="penulis">Tanggal Lahir</label>
                                 <input type="text" class="form-control" name="Tlahir" id="edit-Tlahir" required />
                             </div>
@@ -204,86 +181,72 @@
                                 <label for="tahun">Umur</label>
                                 <input type="text" class="form-control" name="umur" id="edit-umur" required />
                             </div>
-                            </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="penerbit">Nomor KTP</label>
                                 <input type="text" class="form-control" name="NoKtp" id="edit-NoKtp" required />
                             </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cover">Jenis Kelamin</label><br>
-                                    <select class="form-select " aria-label=".form-select-lg example" name="jk" id="edit-jk" required>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Jenis Kelamin</label><br>
+                                <select class="form-select " aria-label=".form-select-lg example" name="jk" id="edit-jk" required>
                                     <option selected>Pilih Jenis Kelamin</option>
                                     <option value="Laki_laki">Laki-laki</option>
                                     <option value="Perempuan">Perempuan</option>
-                                    </select>
-                                </div>
+                                </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cover">Agama</label><br>
-                                    <select class="form-select " aria-label=".form-select-lg example" name="agama" id="edit-agama" required>
-                                    <option selected>Pilih Agama</option>
-                                    <option value="Islam">Islam</option>
-                                    <option value="Kristen">Kristen</option>
-                                     <option value="Khatolik">Khatolik</option>
-                                     <option value="Hindu">Hindu</option>
-                                     <option value="Budha">Budha</option>
-                                     <option value="Konghucu">Konghucu</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="cover">Golongan Darah</label><br>
-                                    <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="edit-goldar" required>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Golongan Darah</label><br>
+                                <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="edit-goldar" required>
                                     <option selected>Pilih Golongan Darah</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
-                                     <option value="O">O</option>
-                                     <option value="AB">AB</option>
-                                    </select>
-                                </div>
+                                    <option value="O">O</option>
+                                    <option value="AB">AB</option>
+                                </select>
                             </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">Pekerjaan</label>
-                        <input type="text" class="form-control" name="pekerjaan" id="edit-pekerjaan" required />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Pekerjaan</label>
+                                <input type="text" class="form-control" name="pekerjaan" id="edit-pekerjaan" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">No Handphone</label>
+                                <input type="text" class="form-control" name="NoTlp" id="edit-NoTlp" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Email</label>
+                                <input type="text" class="form-control" name="email" id="edit-email" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">ALAMAT</label>
+                                <input type="text" class="form-control" name="alamat" id="edit-alamat" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">TINGGI BADAN</label>
+                                <input type="text" class="form-control" name="TBadan" id="edit-TBadan" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">BERAT BADAN</label>
+                                <input type="text" class="form-control" name="BBadan" id="edit-BBadan" required />
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">No Handphone</label>
-                        <input type="text" class="form-control" name="NoTlp" id="edit-NoTlp" required />
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">Email</label>
-                        <input type="text" class="form-control" name="email" id="edit-email" required />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                    <label for="cover">ALAMAT</label>
-                    <input type="text" class="form-control" name="alamat" id="edit-alamat" required />
-                </div>
-                </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">TINGGI BADAN</label>
-                        <input type="text" class="form-control" name="TBadan" id="edit-TBadan" required />
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="cover">BERAT BADAN</label>
-                        <input type="text" class="form-control" name="BBadan" id="edit-BBadan" required />
-                    </div>
-                    </div>
-                </div>
                     <div class="modal-footer">
                         <input type="hidden" name="id" id="edit-id">
                         <!--<input type="hidden" name="old_cover" id="edit-old-cover">-->
@@ -299,40 +262,39 @@
 @endsection
 
 @section('js')
-    <script>
-        $(function() {
-    
-            $(document).on('click', '#btn-edit-pasien', function() {
-                let id = $(this).data('id');
-    
-                $('#image-area').empty();
-    
-                $.ajax({
-                    type: "get",
-                    url: "{{ url('/perawat/ajaxadmin/dataPasien')}}/" + id,
-                    dataType: 'json',
-                    success: function(res) {
-                        $('#edit-nama').val(res.nama);
-                        $('#edit-Tlahir').val(res.Tlahir);
-                        $('#edit-umur').val(res.umur);
-                        $('#edit-NoKtp').val(res.NoKtp);
-                        $('#edit-jk').val(res.jk);
-                        $('#edit-agama').val(res.agama);
-                        $('#edit-goldar').val(res.goldar);
-                        $('#edit-pekerjaan').val(res.pekerjaan);
-                        $('#edit-NoTlp').val(res.NoTlp);
-                        $('#edit-email').val(res.email);
-                        $('#edit-alamat').val(res.alamat);
-                        $('#edit-TBadan').val(res.TBadan);
-                        $('#edit-BBadan').val(res.BBadan);
-                        $('#edit-id').val(res.id);
-    
-                    },
-                });
+<script>
+    $(function() {
+
+        $(document).on('click', '#btn-edit-pasien', function() {
+            let id = $(this).data('id');
+
+            $('#image-area').empty();
+
+            $.ajax({
+                type: "get",
+                url: "{{ url('/perawat/ajaxadmin/dataPasien')}}/" + id,
+                dataType: 'json',
+                success: function(res) {
+                    $('#edit-nama').val(res.nama);
+                    $('#edit-umur').val(res.umur);
+                    $('#edit-NoKtp').val(res.NoKtp);
+                    $('#edit-jk').val(res.jk);
+                    $('#edit-agama').val(res.agama);
+                    $('#edit-goldar').val(res.goldar);
+                    $('#edit-pekerjaan').val(res.pekerjaan);
+                    $('#edit-NoTlp').val(res.NoTlp);
+                    $('#edit-email').val(res.email);
+                    $('#edit-alamat').val(res.alamat);
+                    $('#edit-TBadan').val(res.TBadan);
+                    $('#edit-BBadan').val(res.BBadan);
+                    $('#edit-id').val(res.id);
+
+                },
             });
         });
-        
-        function deleteConfirmation(npm, nama) {
+    });
+
+    function deleteConfirmation(npm, nama) {
         swal.fire({
             title: "Hapus?",
             type: 'warning',
@@ -375,6 +337,5 @@
             return false;
         });
     }
-    
-    </script>
-    @stop
+</script>
+@stop

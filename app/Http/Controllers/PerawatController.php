@@ -34,11 +34,9 @@ class PerawatController extends Controller
     public function submit_data(Request $req){
         $validate = $req->validate([
             'nama' => 'required',
-            'Tlahir' => 'required',
             'umur' => 'required',
             'NoKtp' => 'required',
             'jk' => 'required',
-            'agama' => 'required',
             'goldar' => 'required',
             'pekerjaan' => 'required',
             'NoTlp' => 'required',
@@ -50,11 +48,9 @@ class PerawatController extends Controller
 
         $Pasien = new PendataanPasien;
         $Pasien->nama = $req->get('nama');
-        $Pasien->Tlahir = $req->get('Tlahir');
         $Pasien->umur = $req->get('umur');
         $Pasien->NoKtp = $req->get('NoKtp');
         $Pasien->jk = $req->get('jk');
-        $Pasien->agama = $req->get('agama');
         $Pasien->goldar = $req->get('goldar');
         $Pasien->pekerjaan = $req->get('pekerjaan');
         $Pasien->NoTlp = $req->get('NoTlp');
@@ -153,7 +149,7 @@ class PerawatController extends Controller
         return view('perawat.trash', compact('user','pasien'));
     }
 
-    publiv function($id){
+    public function adada($id){
 
         PendataanPasien::onlyTrashed()->where('id',$id)->restore();
         Session::flash('status', 'Ubah data berhasil !!');

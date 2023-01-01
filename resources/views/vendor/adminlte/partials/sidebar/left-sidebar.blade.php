@@ -51,7 +51,7 @@
                 </li>
                 @elseif($user->roles_id == 3)
                 <li class="nav-item pt-3">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('dokter.pemeriksaan') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Pemeriksaan
