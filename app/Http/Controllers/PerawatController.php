@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\PendataanPasien;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
-use App\Models\User;
 
 
 class PerawatController extends Controller
@@ -141,11 +140,27 @@ class PerawatController extends Controller
         ]);
     }
     
-    public function print_data_pasien(){
+    public function print_pasien(){
         $pasien = PendataanPasien::all();
 
-        $pdf = PDF::loadview('print_data_pasien',['pasien'=>$pasien]);
+        $pdf = PDF::loadview('print_pasien',['pasien'=>$pasien]);
         return $pdf->download('data_pasien.pdf');
     }
 
+    public function recycle_bin(){
+        $user   = Auth::user();
+        $pasien  = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.trash', compact('user','pasien'));
+    }
+
+    publiv function($id){
+
+        PendataanPasien::onlyTrashed()->where('id',$id)->restore();
+        Session::flash('status', 'Ubah data berhasil !!');
+
+        return redirect()->back();
+
+
+    }
+    
 }
