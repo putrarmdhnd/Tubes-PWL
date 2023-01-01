@@ -16,11 +16,9 @@ return new class extends Migration
         Schema::create('pendataan_pasiens', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->date('Tlahir');
             $table->bigInteger('umur');
             $table->bigInteger('NoKtp');
             $table->string('jk');
-            $table->string('agama');
             $table->string('goldar');
             $table->string('pekerjaan');
             $table->bigInteger('NoTlp');

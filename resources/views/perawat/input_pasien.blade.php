@@ -10,6 +10,8 @@
         <div class="card-body">
             <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
             <a href="{{ route('perawat.print.pasien')}}" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            <a href="/recycle_bin" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            
             <table id="table-data" class="table table-bordered">
                 <thead>
                     <tr class="text-center">
@@ -144,7 +146,8 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="cover">ALAMAT</label>
-                    <input type="text" class="form-control" name="alamat" id="alamat" required />
+                    <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
+                    
                 </div>
                 </div>
                     <div class="col-md-6">
