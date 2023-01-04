@@ -48,4 +48,8 @@ Route::middleware(['auth', 'dokter'])->group(function () {
   
     Route::get('/dokter',[App\Http\Controllers\DokterController::class,'index'])->name('dokter.home');
     Route::get('/pemeriksaan',[App\Http\Controllers\DokterController::class,'Pemeriksaan'])->name('dokter.pemeriksaan');
+
+    Route::post('/tambah-pemeriksaan',[App\Http\Controllers\DokterController::class,'Pemeriksaan'])->name('dokter.pemeriksaan.tambah');
+    Route::get('pemeriksaan/ajaxadmin/dataPasien/{id}', [App\Http\Controllers\DokterController::class, 'getDataPasien']);
+
 });

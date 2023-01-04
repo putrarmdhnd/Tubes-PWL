@@ -22,4 +22,9 @@ class DokterController extends Controller
         $pasien = PendataanPasien::all();
         return view('dokter.input_pemeriksaan', compact('user','pasien'));
     }
+    public function getDataPasien($id){
+        $pasien1 = PendataanPasien::find($id);
+
+        return response()->json($pasien1);
+    }
 }
