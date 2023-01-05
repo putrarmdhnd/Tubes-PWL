@@ -56,45 +56,44 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('dokter.pemeriksaan.tambah') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="edit-nama" disabled/>
+                                <input type="text" class="form-control" name="nama" id="dataPasien-nama" disabled/>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="nama">Keluhan</label>
-                                <textarea class="form-control" placeholder="" id="edit-nama" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="" name="keluhan" id="edit-nama" style="height: 100px"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama">Keterangan Penyakit</label>
-                                <input type="text" class="form-control" name="nama" id="edit-nama"/>
+                                <input type="text" class="form-control" name="keterangan_penyakit" id="edit-nama"/>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="nama">Resep Obat</label>
-                                <textarea class="form-control" placeholder="" id="edit-nama" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="" name="resep_obat" id="edit-nama" style="height: 100px"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cover">Status Dirawat</label><br>
-                                <select class="form-select" aria-label=".form-select-lg example" name="jk" id="edit-jk" required>
+                                <select class="form-select" aria-label=".form-select-lg example" name="status_dirawat" id="edit-jk" required>
                                     <option selected>Pilih Status</option>
-                                    <option value="Dirawat">Dirawat</option>
-                                    <option value="Tidak Dirawat">Tidak Dirawat</option>
+                                    <option value="1">Dirawat</option>
+                                    <option value="0">Tidak Dirawat</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id" id="edit-id">
+                        <input type="hidden" name="pasien_id" id="dataPasien-id">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -118,8 +117,8 @@
                 url: "{{ url('pemeriksaan/ajaxadmin/dataPasien')}}/" + id,
                 dataType: 'json',
                 success: function(res) {
-                    $('#edit-nama').val(res.nama);
-                    $('#edit-id').val(res.id);
+                    $('#dataPasien-nama').val(res.nama);
+                    $('#dataPasien-id').val(res.id);
 
                 },
             });
