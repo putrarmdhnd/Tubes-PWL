@@ -16,6 +16,8 @@
             <th>NO</th>
             <th>NAMA</th>
             <th>EMAIL</th>
+            <th>NO_HP</th>
+            <th>JABATAN</th>
             <th>JENIS KELAMIN</th>
             <th>UMUR</th>
             <th>ALAMAT</th>
@@ -29,6 +31,8 @@
             <td>{{$no++}}</td>
             <td>{{$user->nama}}</td>
             <td>{{$user->email}}</td>
+            <td>{{$user->no_hp}}</td>
+            <td>{{$user->jabatan}}</td>
             <td>{{$user->jk}}</td>
             <td>{{$user->umur}}</td>
             <td>{{$user->alamat}}</td>
@@ -55,42 +59,80 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" action="{{ route('admin.submit') }}" enctype="multipart/form-data">
           @csrf
-          <div class="form-group">
-            <label for="judul">NAMA</label>
-            <input type="text" class="form-control" name="judul" id="judul" required />
-          </div>
-          <div class="form-group">
-            <label for="penulis">EMAIL</label>
-            <input type="text" class="form-control" name="penulis" id="penulis" required />
-          </div>
-          <div class="form-group">
-            <label for="tahun">JENIS KELAMIN</label>
-            <input type="text" class="form-control" name="tahun" id="tahun" required />
-          </div>
-          <div class="form-group">
-            <label for="penerbit">UMUR</label>
-            <input type="text" class="form-control" name="penerbit" id="penerbit" required />
-          </div>
-          <div class="form-group">
-            <label for="penerbit">ALAMAT</label>
-            <input type="text" class="form-control" name="penerbit" id="penerbit" required />
-          </div>
-          <div class="form-group">
-            <label for="penerbit" class="px-2">HAK AKSES </label>
-            <select class="form-select" id="validationCustom04" required>
-              <option selected disabled value="">Choose...</option>
-              <option>DOKTER</option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            <button type="submit" class="btn btn-primary">Kirim</button>
-          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" class="form-control" name="nama" id="nama" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="tahun">Email</label>
+                <input type="text" class="form-control" name="email" id="email" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="penerbit">Nomor HP</label>
+                <input type="text" class="form-control" name="no_hp" id="no_hp" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="penerbit">Password</label>
+                <input type="text" class="form-control" name="password" id="password" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="penerbit">JABATAN</label>
+                <input type="text" class="form-control" name="jabatan" id="jabatan" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="cover">Jenis Kelamin</label><br>
+                <select class="form-select " aria-label=".form-select-lg example" name="jk" id="jk" required>
+                  <option selected>Pilih Jenis Kelamin</option>
+                  <option value="L">L</option>
+                  <option value="P">P</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="cover">UMUR</label>
+                <input type="text" class="form-control" name="umur" id="umur" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="cover">ALAMAT</label>
+                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="roles_id">ROLE</label><br>
+                <label for="">1.Admin 2.Perawat 3.Dokter</label><br>
+                <select class="form-select " aria-label=".form-select-lg example" name="roles_id" id="roles_id" required>
+                  <option selected>Pilih Role</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Kirim</button>
+              </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
 @endsection
