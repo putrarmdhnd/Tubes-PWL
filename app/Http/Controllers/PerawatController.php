@@ -145,18 +145,16 @@ class PerawatController extends Controller
 
     public function recycle_bin(){
         $user   = Auth::user();
-        $pasien  = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        $pasien = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
         return view('perawat.trash', compact('user','pasien'));
     }
 
-    public function adada($id){
-
-        PendataanPasien::onlyTrashed()->where('id',$id)->restore();
-        Session::flash('status', 'Ubah data berhasil !!');
-
-        return redirect()->back();
-
-
+    public function restore($id)
+    {
+        PendataanPasien::onlyTrashed()->where('$id')->restore();
+        Session::flash('status', 'Data berhasil dikembalikan!!!');   
+        
+        return redirect()->route('recycle.bin');
     }
     
 }

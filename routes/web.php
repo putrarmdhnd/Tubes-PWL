@@ -39,9 +39,11 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
     Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien'])->name('admin.book.delete');
     
-
     Route::get('perawat/print_data_pasien', [App\Http\Controllers\PerawatController::class, 'print_data_pasien'])->name('perawat.print.pasien');
     
+    //recycle bin
+    Route::get('/recycle_bin',[App\Http\Controllers\PerawatController::class,'recycle_bin'])->name('recycle.bin');
+    Route::post('/{id}/restore',[App\Http\Controllers\PerawatController::class,'restore']);
 
 });
 Route::middleware(['auth', 'dokter'])->group(function () {

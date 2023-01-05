@@ -16,7 +16,6 @@
                         <th>NAMA LENGKAP</th>
                         <th>UMUR</th>
                         <th>JENIS KELAMIN</th>
-                        <th>AGAMA</th>
                         <th>GOLONGAN DARAH</th>
                         <th>ALAMAT</th>
                         <th>TINGGI BADAN</th>
@@ -32,14 +31,16 @@
                         <td>{{$PendataanPasien->nama}}</td>
                         <td>{{$PendataanPasien->umur}}</td>
                         <td>{{$PendataanPasien->jk}}</td>
-                        <td>{{$PendataanPasien->agama}}</td>
                         <td>{{$PendataanPasien->goldar}}</td>
                         <td>{{$PendataanPasien->alamat}}</td>
                         <td>{{$PendataanPasien->TBadan}}</td>
                         <td>{{$PendataanPasien->BBadan}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$PendataanPasien->id}}', '{{$PendataanPasien->nama}}')">Hapus</button>
+                            <form method="post" action="Perawat/'{$PendataanPasien->id}'/restore" enctype="multipart/form-data">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Restore</button>
+                            </form>
                             </div>
                         </td>
                     </tr>
