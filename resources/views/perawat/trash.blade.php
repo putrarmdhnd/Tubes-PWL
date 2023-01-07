@@ -7,6 +7,17 @@
 <div class="container-fluid">
     <div class="card card-default">
         <div class="card-header">{{ __('Recycle_bin') }}</div>
+        <div class="pull-right">
+        <a href="{{ url ('perawat/delete')}}" class="btn btn-danger btn-sm">
+            <i class="fa fa-trash"></i> delete all
+        </a>
+        <a href="{{ url ('perawat/restore')}}" class="btn btn-info btn-sm">
+            <i class="fa fa-undo"></i> restore all
+        </a>
+        <a href="{{ url ('perawat/input-pasien')}}" class="btn btn-secondary btn-sm">
+            <i class="fa fa-chevron-left"></i> back
+        </a>
+        </div>
         <div class="card-body">
            
             <table id="table-data" class="table table-bordered">
@@ -36,11 +47,13 @@
                         <td>{{$PendataanPasien->TBadan}}</td>
                         <td>{{$PendataanPasien->BBadan}}</td>
                         <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                            <form method="post" action="Perawat/'{$PendataanPasien->id}'/restore" enctype="multipart/form-data">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Restore</button>
-                            </form>
+                            <div class="btn-group text-center" role="group" aria-label="Basic example">
+                            <a href="{{ url ('perawat/restore/'.$PendataanPasien->id)}}" class="btn btn-info btn-sm">
+                                 restore
+                            </a>
+                            <a href="{{ url ('perawat/delete/'.$PendataanPasien->id)}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin mau menghapus?')">
+                                 hapus permanen
+                            </a>
                             </div>
                         </td>
                     </tr>
