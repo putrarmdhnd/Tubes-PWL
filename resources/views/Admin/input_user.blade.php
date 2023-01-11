@@ -117,12 +117,11 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="roles_id">ROLE</label><br>
-                <label for="">1.Admin 2.Perawat 3.Dokter</label><br>
                 <select class="form-select " aria-label=".form-select-lg example" name="roles_id" id="roles_id" required>
                   <option selected>Pilih Role</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option value="1">Admin</option>
+                  <option value="2">Perawat</option>
+                  <option value="3">Dokter</option>
                 </select>
               </div>
               <div class="modal-footer">
