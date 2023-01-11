@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PendataanPasien;
 use App\Models\Pemeriksaan;
-
+use App\Models\User;
 
 class DokterController extends Controller
 {
@@ -37,6 +37,7 @@ class DokterController extends Controller
             'resep_obat' => 'required',
             'status_dirawat' => 'required',
             'pasien_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         $pemeriksaan = new Pemeriksaan;
@@ -45,6 +46,7 @@ class DokterController extends Controller
         $pemeriksaan->resep_obat = $req->get('resep_obat');
         $pemeriksaan->status_dirawat = $req->get('status_dirawat');
         $pemeriksaan->pasien_id = $req->get('pasien_id');
+        $pemeriksaan->user_id = $req->get('user_id');
 
 
         $pemeriksaan->save();

@@ -34,7 +34,7 @@
                         <td>{{$PendataanPasien->BBadan}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btn-tmbh-pemeriksaan" class="btn btn-success " data-toggle="modal" data-target="#tambahPemeriksaanModal" data-id="{{ $PendataanPasien->id }}">Periksa</button>
+                                <button type="button" id="btn-tmbh-pemeriksaan" class="btn btn-success " data-toggle="modal" data-target="#tambahPemeriksaanModal" data-id="{{ $PendataanPasien->id}}">Periksa</button>
                             </div>
                         </td>
                     </tr>
@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="dataPasien-nama" disabled/>
+                                <input type="text" class="form-control" name="nama" id="dataPasien-nama" disabled />
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -72,7 +72,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama">Keterangan Penyakit</label>
-                                <input type="text" class="form-control" name="keterangan_penyakit" id="edit-nama"/>
+                                <input type="text" class="form-control" name="keterangan_penyakit" id="edit-nama" />
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -94,6 +94,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="pasien_id" id="dataPasien-id">
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
