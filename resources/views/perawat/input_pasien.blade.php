@@ -9,8 +9,8 @@
         <div class="card-header">{{ __('Pengelolaan Buku') }}</div>
         <div class="card-body">
             <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
-            <a href="{{ route('perawat.print.pasien')}}" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
-            <a href="/recycle_bin" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            <a href="/exportpdf" target="blank" class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            <a href="/recycle_bin" target="blank" class="btn btn-secondary mb-4"><i class="fa fa-trash"></i>recycle Bin</a>
 
             <table id="table-data" class="table table-bordered">
                 <thead>
@@ -76,9 +76,15 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="penerbit">Nomor KTP</label>
-                                <input type="text" class="form-control" name="NoKtp" id="NoKtp" required />
+                        <div class="form-group">
+                                <label for="cover">Golongan Darah</label><br>
+                                <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="goldar" required>
+                                    <option selected>Pilih Golongan Darah</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="O">O</option>
+                                    <option value="AB">AB</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -92,15 +98,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cover">Golongan Darah</label><br>
-                                <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="goldar" required>
-                                    <option selected>Pilih Golongan Darah</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="O">O</option>
-                                    <option value="AB">AB</option>
-                                </select>
+                        <div class="form-group">
+                                <label for="penerbit">Nomor KTP</label>
+                                <input type="text" class="form-control" name="NoKtp" id="NoKtp" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -122,9 +122,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cover">ALAMAT</label>
-                                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
+                        <div class="form-group">
+                                <label for="cover">BERAT BADAN</label>
+                                <input type="text" class="form-control" name="BBadan" id="BBadan" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -134,9 +134,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cover">BERAT BADAN</label>
-                                <input type="text" class="form-control" name="BBadan" id="BBadan" required />
+                        <div class="form-group">
+                                <label for="cover">ALAMAT</label>
+                                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
                             </div>
                         </div>
                     </div>
@@ -172,20 +172,20 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="penulis">Tanggal Lahir</label>
-                                <input type="text" class="form-control" name="Tlahir" id="edit-Tlahir" required />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label for="tahun">Umur</label>
                                 <input type="text" class="form-control" name="umur" id="edit-umur" required />
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="penerbit">Nomor KTP</label>
-                                <input type="text" class="form-control" name="NoKtp" id="edit-NoKtp" required />
+                        <div class="form-group">
+                                <label for="cover">Golongan Darah</label><br>
+                                <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="edit-goldar" required>
+                                    <option selected>Pilih Golongan Darah</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="O">O</option>
+                                    <option value="AB">AB</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -199,15 +199,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cover">Golongan Darah</label><br>
-                                <select class="form-select " aria-label=".form-select-lg example" name="goldar" id="edit-goldar" required>
-                                    <option selected>Pilih Golongan Darah</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="O">O</option>
-                                    <option value="AB">AB</option>
-                                </select>
+                        <div class="form-group">
+                                <label for="penerbit">Nomor KTP</label>
+                                <input type="text" class="form-control" name="NoKtp" id="edit-NoKtp" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -229,9 +223,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cover">ALAMAT</label>
-                                <input type="text" class="form-control" name="alamat" id="edit-alamat" required />
+                        <div class="form-group">
+                                <label for="cover">BERAT BADAN</label>
+                                <input type="text" class="form-control" name="BBadan" id="edit-BBadan" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -241,10 +235,10 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cover">BERAT BADAN</label>
-                                <input type="text" class="form-control" name="BBadan" id="edit-BBadan" required />
-                            </div>
+                        <div class="form-group">
+                                <label for="cover">ALAMAT</label>
+                                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="edit-alamat"></textarea>
+                            </div> 
                         </div>
                     </div>
                     <div class="modal-footer">
