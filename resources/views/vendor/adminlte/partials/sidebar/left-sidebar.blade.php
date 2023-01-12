@@ -42,7 +42,15 @@
                     </a>
                 </li>
                 <li class="nav-item pt-3">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Data Dokter
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item pt-3">
+                    <a href="{{ route('pemeriksaan.home') }}" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Data Pemeriksaan

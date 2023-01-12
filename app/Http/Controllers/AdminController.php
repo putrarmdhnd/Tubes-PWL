@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\RegisteredUserNotification;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -42,12 +43,15 @@ class AdminController extends Controller
             'roles_id' => 'required'
         ]);
 
-        $Pengguna = new User;
+        $password = $req->get('password');
+        $hash_pass = Hash::make($password);
+
+        $Pengguna = new User; 
         $Pengguna->nama = $req->get('nama');
         $Pengguna->email = $req->get('email');
         $Pengguna->no_hp = $req->get('no_hp');
         $Pengguna->jabatan = $req->get('jabatan');
-        $Pengguna->password = $req->get('password');
+        $Pengguna->password = $hash_pass;
         $Pengguna->jk = $req->get('jk');
         $Pengguna->umur = $req->get('umur');
         $Pengguna->alamat = $req->get('alamat');

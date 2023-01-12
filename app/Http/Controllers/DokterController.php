@@ -32,6 +32,7 @@ class DokterController extends Controller
     public function tambah_data(Request $req){
         
         $validate = $req->validate([
+            'nama_pasien' => 'required',
             'keluhan' => 'required',
             'keterangan_penyakit' => 'required',
             'resep_obat' => 'required',
@@ -41,6 +42,7 @@ class DokterController extends Controller
         ]);
 
         $pemeriksaan = new Pemeriksaan;
+        $pemeriksaan->nama_pasien = $req->get('nama_pasien');
         $pemeriksaan->keluhan = $req->get('keluhan');
         $pemeriksaan->keterangan_penyakit = $req->get('keterangan_penyakit');
         $pemeriksaan->resep_obat = $req->get('resep_obat');
