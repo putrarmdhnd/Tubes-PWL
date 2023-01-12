@@ -155,7 +155,7 @@ class PerawatController extends Controller
         $pdf = PDF::loadview('perawat/print-pdf');
     }
 
-
+    }
     public function recycle_bin()
     {
         $user   = Auth::user();

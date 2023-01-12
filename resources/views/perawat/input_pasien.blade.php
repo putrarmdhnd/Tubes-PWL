@@ -6,8 +6,9 @@
 @section('content')
 <div class="container-fluid">
     <div class="card card-default">
-        <div class="card-header">{{ __('Pengelolaan Buku') }}</div>
+        <div class="card-header">{{ __('Pengelolaan Pasien') }}</div>
         <div class="card-body">
+
             <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
             <a href=" {{ route('perawat.export') }} "  class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
             <a href=" {{ route('recycle.bin') }} "  class="btn btn-secondary mb-4"><i class="fa fa-trash"></i>recycle Bin</a>
@@ -40,7 +41,7 @@
                         <td>{{$PendataanPasien->BBadan}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btn-edit-pasien" class="btn btn-success " data-toggle="modal" data-target="#editBukuModal" data-id="{{ $PendataanPasien->id }}">Edit</button>
+                                <button type="button" id="btn-edit-pasien" class="btn btn-success " data-toggle="modal" data-target="#editPasienModal" data-id="{{ $PendataanPasien->id }}">Edit</button>
                                 <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$PendataanPasien->id}}', '{{$PendataanPasien->nama}}')">Hapus</button>
                             </div>
                         </td>
@@ -51,12 +52,12 @@
         </div>
     </div>
 </div>
-<!--  TAMBAH DATA BUKU MODAL   -->
-<div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--  TAMBAH DATA PASIEN MODAL   -->
+<div class="modal fade" id="tambahPasienModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLable">Tambah Data Buku</h3>
+                <h3 class="modal-title" id="exampleModalLable">Tambah Data Pasien</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -133,7 +134,7 @@
                                 <input type="text" class="form-control" name="TBadan" id="TBadan" required />
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                         <div class="form-group">
                                 <label for="cover">ALAMAT</label>
                                 <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
@@ -151,12 +152,12 @@
     </div>
 </div>
 
-<!--  UPDATE DATA BUKU MODAL   -->
-<div class="modal fade" id="editBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--  UPDATE DATA PASIEN MODAL   -->
+<div class="modal fade" id="editPasienModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLable">Edit Data Buku</h3>
+                <h3 class="modal-title" id="exampleModalLable">Edit Data Pasien</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
