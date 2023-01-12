@@ -1,0 +1,30 @@
+<div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tahun">Umur</label>
+                                <input type="text" class="form-control" name="umur" id="edit-umur" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="jk">Jenis Kelamin</label>
+                                <input type="text" class="form-control" name="jk" id="edit-jk"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Golongan Darah</label><br>
+                                <input type="text" class="form-control" name="goldar" id="edit-goldar"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Tinggi Badan</label>
+                                <input type="text" class="form-control" name="TBadan" id="edit-TBadan"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cover">Berat Badan</label>
+                                <input type="text" class="form-control" name="BBadan" id="edit-BBadan" required />
+                            </div>
+                        </div>

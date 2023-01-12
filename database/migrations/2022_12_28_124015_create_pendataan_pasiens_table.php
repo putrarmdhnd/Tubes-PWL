@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pendataan_pasiens', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->autoIncrement();
             $table->string('nama');
             $table->bigInteger('umur');
             $table->bigInteger('NoKtp');

@@ -27,4 +27,38 @@ class AdminController extends Controller
         $users = User::all();
         return view('admin.input_user', compact('user', 'users'));
     }
+
+    public function submit_data(Request $req)
+    {
+        $validate = $req->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'no_hp' => 'required',
+            'jabatan' => 'required',
+            'password' => 'required',
+            'jk' => 'required',
+            'umur' => 'required',
+            'alamat' => 'required',
+            'roles_id' => 'required'
+        ]);
+
+        $Pengguna = new User;
+        $Pengguna->nama = $req->get('nama');
+        $Pengguna->email = $req->get('email');
+        $Pengguna->no_hp = $req->get('no_hp');
+        $Pengguna->jabatan = $req->get('jabatan');
+        $Pengguna->password = $req->get('password');
+        $Pengguna->jk = $req->get('jk');
+        $Pengguna->umur = $req->get('umur');
+        $Pengguna->alamat = $req->get('alamat');
+        $Pengguna->roles_id = $req->get('roles_id');
+
+        $Pengguna->save();
+
+        $notification = array(
+            'message' => 'Data buku berhasil ditambahkan',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.input')->with($notification);
+    }
 }

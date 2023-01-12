@@ -25,14 +25,16 @@ class PerawatController extends Controller
     }
 
 
-    public function pasiendata(){
+    public function pasiendata()
+    {
         $user   = Auth::user();
         $pasien  = PendataanPasien::all(); // menarik semua (all) data dari models 
-        return view('perawat.input_pasien', compact('user','pasien'));
+        return view('perawat.input_pasien', compact('user', 'pasien'));
     }
 
-    
-    public function submit_data(Request $req){
+
+    public function submit_data(Request $req)
+    {
         $validate = $req->validate([
             'nama' => 'required',
             'umur' => 'required',
@@ -65,20 +67,21 @@ class PerawatController extends Controller
 
         $notification = array(
             'message' => 'Data buku berhasil di tambahkan',
-            'alert-type' =>('success')
+            'alert-type' => ('success')
         );
 
         return redirect()->route('perawat.input')->with($notification);
-
     }
-    
-    public function getDataPasien($id){
+
+    public function getDataPasien($id)
+    {
         $pasien1 = PendataanPasien::find($id);
 
         return response()->json($pasien1);
     }
 
-    public function update_data(Request $req){
+    public function update_data(Request $req)
+    {
         $pasien = PendataanPasien::find($req->get('id'));
 
         $validate = $req->validate([
@@ -115,10 +118,11 @@ class PerawatController extends Controller
         );
         return redirect()->route('perawat.input')->with($notification);
     }
-    
 
-    
-    public function delete_pasien($id){
+
+
+    public function delete_pasien($id)
+    {
         $pasien = PendataanPasien::find($id);
 
 
@@ -138,11 +142,12 @@ class PerawatController extends Controller
 
         view()->share('pasien', $pasien);
         $pdf = PDF::loadview('perawat/print-pdf');
-        return $pdf->download('data_pasien.pdf');
-    }
 
-    public function recycle_bin(){
+
+    public function recycle_bin()
+    {
         $user   = Auth::user();
+
         $pasien = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
         return view('perawat.trash', compact('user','pasien'));
     }
@@ -169,6 +174,8 @@ class PerawatController extends Controller
                 $pasien = PendataanPasien::onlyTrashed()->forceDelete();
             }
             return redirect()->route('recycle.bin');
+            
+        $pasien  = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.trash', compact('user', 'pasien'));
     }
-    
 }
