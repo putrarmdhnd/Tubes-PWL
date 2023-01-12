@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\PendataanPasien;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
+use PDF;
 
 
 class PerawatController extends Controller
@@ -85,11 +86,9 @@ class PerawatController extends Controller
 
         $validate = $req->validate([
             'nama' => 'required',
-            'Tlahir' => 'required',
             'umur' => 'required',
             'NoKtp' => 'required',
             'jk' => 'required',
-            'agama' => 'required',
             'goldar' => 'required',
             'pekerjaan' => 'required',
             'NoTlp' => 'required',
@@ -100,11 +99,9 @@ class PerawatController extends Controller
         ]);
 
         $pasien->nama = $req->get('nama');
-        $pasien->Tlahir = $req->get('Tlahir');
         $pasien->umur = $req->get('umur');
         $pasien->NoKtp = $req->get('NoKtp');
         $pasien->jk = $req->get('jk');
-        $pasien->agama = $req->get('agama');
         $pasien->goldar = $req->get('goldar');
         $pasien->pekerjaan = $req->get('pekerjaan');
         $pasien->NoKtp = $req->get('NoKtp');
@@ -139,18 +136,45 @@ class PerawatController extends Controller
             'message' => $message,
         ]);
     }
-
-    public function print_pasien()
-    {
+    
+    public function exportpdf(){
         $pasien = PendataanPasien::all();
 
-        $pdf = PDF::loadview('print_pasien', ['pasien' => $pasien]);
-        return $pdf->download('data_pasien.pdf');
-    }
+        view()->share('pasien', $pasien);
+        $pdf = PDF::loadview('perawat/print-pdf');
+
 
     public function recycle_bin()
     {
         $user   = Auth::user();
+
+        $pasien = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.trash', compact('user','pasien'));
+    }
+
+    public function restore($id = null)
+    {
+        if($id != null){
+        $pasien = PendataanPasien::onlyTrashed()
+        ->where('id', $id)   
+        ->restore();
+        } else {
+            $pasien = PendataanPasien::onlyTrashed()->restore();
+        }
+        return redirect()->route('recycle.bin');
+    }
+
+    public function delete($id = null)
+    {
+        if($id != null){
+            $pasien = PendataanPasien::onlyTrashed()
+            ->where('id', $id)   
+            ->forceDelete();
+            } else {
+                $pasien = PendataanPasien::onlyTrashed()->forceDelete();
+            }
+            return redirect()->route('recycle.bin');
+            
         $pasien  = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
         return view('perawat.trash', compact('user', 'pasien'));
     }
