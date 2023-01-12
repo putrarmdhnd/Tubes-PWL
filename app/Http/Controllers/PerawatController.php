@@ -143,7 +143,7 @@ class PerawatController extends Controller
         view()->share('pasien', $pasien);
         $pdf = PDF::loadview('perawat/print-pdf');
 
-
+    }
     public function recycle_bin()
     {
         $user   = Auth::user();
