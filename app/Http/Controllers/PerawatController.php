@@ -8,7 +8,8 @@ use App\Models\User;
 use App\Models\PendataanPasien;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
-use PDF;
+use App\Models\Pemeriksaan;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class PerawatController extends Controller
@@ -136,12 +137,23 @@ class PerawatController extends Controller
             'message' => $message,
         ]);
     }
+
+
+
+    public function pemeriksaan_data(){
+        $user   = Auth::user();
+        $pemeriksaan  = Pemeriksaan::all();
+        return view('perawat.data_pemeriksaan', compact('user', 'pemeriksaan'));
+    }
+
+
     
     public function exportpdf(){
         $pasien = PendataanPasien::all();
 
         view()->share('pasien', $pasien);
         $pdf = PDF::loadview('perawat/print-pdf');
+    }
 
 
     public function recycle_bin()
