@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function sortir_pasien()
+    {
+        return $this->hasMany(Pemeriksaan::class, 'user_id', 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

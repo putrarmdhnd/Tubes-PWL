@@ -41,8 +41,8 @@
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" id="btn-edit-pasien" class="btn btn-success " data-toggle="modal" data-target="#editBukuModal" data-id="{{ $PendataanPasien->id }}">Edit</button>
-                                <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$PendataanPasien->id}}', '{{$PendataanPasien->nama}}')">Hapus</button>
-                            </div>
+                                    <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$PendataanPasien->id}}', '{{$PendataanPasien->nama}}')">Hapus</button>
+                                </div>
                         </td>
                     </tr>
                     @endforeach
