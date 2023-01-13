@@ -289,7 +289,7 @@
         });
     });
 
-    function deleteConfirmation(npm, nama) {
+    function deleteConfirmation(id, nama) {
         swal.fire({
             title: "Hapus?",
             type: 'warning',
@@ -306,7 +306,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: "pasien/delete/" + npm,
+                    url: "pasien/delete/" + id,
                     data: {
                         _token: CSRF_TOKEN
                     },

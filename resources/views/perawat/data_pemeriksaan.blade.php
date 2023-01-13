@@ -105,7 +105,7 @@ function deleteConfirmation(id, nama) {
 
                 $.ajax({
                     type: 'POST',
-                    url: "pemeriksaan/delete1/" + id,
+                    url: "pemeriksaan/delete/" + id,
                     data: {
                         _token: CSRF_TOKEN
                     },

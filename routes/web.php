@@ -37,8 +37,9 @@ Route::middleware(['auth', 'perawat'])->group(function () {
     Route::post('/perawat/submit-pasien', [App\Http\Controllers\PerawatController::class, 'submit_data'])->name('perawat.submit');
 
     Route::patch('perawat/update-pasien', [App\Http\Controllers\PerawatController::class, 'update_data'])->name('perawat.update');
+    Route::get('perawat/ajaxadmin/dataPasien/{id}', [App\Http\Controllers\PerawatController::class, 'getDataPasien']);
 
-    Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien']);
+    Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien'])->name('admin.book.delete');
 
     Route::get('/data-pemeriksaan', [App\Http\Controllers\PerawatController::class, 'pemeriksaan_data'])->name('pemeriksaan.home');
     
@@ -53,10 +54,10 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
 
     //halaman pemeriksaan
-    Route::post('perawat/pemeriksaan/delete1/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pemeriksaan']);
+    Route::post('perawat/pemeriksaan/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pemeriksaan']);
     Route::get('/recycle_bin_pemeriksaan',[App\Http\Controllers\PerawatController::class,'recycle_bin_pemeriksaan'])->name('bin.recycle');
-    Route::get('perawat/restore/{id?}', [App\Http\Controllers\PerawatController::class,'restore']);
-    Route::get('perawat/delete/{id?}', [App\Http\Controllers\PerawatController::class,'delete']);
+    Route::get('perawat/restore_pemeriksaan/{id?}', [App\Http\Controllers\PerawatController::class,'restore_pemeriksaan']);
+    Route::get('perawat/delete_periksa/{id?}', [App\Http\Controllers\PerawatController::class,'delete_periksa']);
     Route::get('/exportpdf1', [App\Http\Controllers\PerawatController::class, 'exportpdf1'])->name('perawat.export1');
 });
 Route::middleware(['auth', 'dokter'])->group(function () {

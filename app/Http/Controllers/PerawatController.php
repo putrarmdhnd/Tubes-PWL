@@ -207,32 +207,32 @@ class PerawatController extends Controller
         return view('perawat.sampah', compact('user','pemeriksaan'));
     }
 
-    // public function restore($id = null)
-    // {
-    //     if($id != null){
-    //     $pasien = PendataanPasien::onlyTrashed()
-    //     ->where('id', $id)   
-    //     ->restore();
-    //     } else {
-    //         $pasien = PendataanPasien::onlyTrashed()->restore();
-    //     }
-    //     return redirect()->route('recycle.bin');
-    // }
+    public function restore_pemeriksaan($id = null)
+    {
+        if($id != null){
+            $pemeriksaan = Pemeriksaan::onlyTrashed()
+        ->where('id', $id)   
+        ->restore();
+        } else {
+            $pemeriksaan = Pemeriksaan::onlyTrashed()->restore();
+        }
+        return redirect()->route('recycle.bin');
+    }
 
-    // public function delete($id = null)
-    // {
-    //     if($id != null){
-    //         $pasien = PendataanPasien::onlyTrashed()
-    //         ->where('id', $id)   
-    //         ->forceDelete();
-    //         } else {
-    //             $pasien = PendataanPasien::onlyTrashed()->forceDelete();
-    //         }
-    //         return redirect()->route('recycle.bin');
+    public function delete_periksa($id = null)
+    {
+        if($id != null){
+            $pemeriksaan = Pemeriksaan::onlyTrashed()
+            ->where('id', $id)   
+            ->forceDelete();
+            } else {
+                $pemeriksaan = Pemeriksaan::onlyTrashed()->forceDelete();
+            }
+            return redirect()->route('bin.recycle');
             
-    //     $pasien  = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
-    //     return view('perawat.trash', compact('user', 'pasien'));
-    // }
+            $pemeriksaan = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.sampah', compact('user', 'pemeriksaan'));
+    }
 
     public function exportpdf1(){
         $pemeriksaan = Pemeriksaan::all();
