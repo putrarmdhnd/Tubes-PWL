@@ -9,8 +9,8 @@
         <div class="card-header">{{ __('Pengelolaan Pasien') }}</div>
         <div class="card-body">
 
-            <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
-            <a href=" {{ route('perawat.export') }} "  class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahPasienModal"><i class="fa fa-plus"></i>Tambah Data</button>
+            <a href="/exportpdf"  class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
             <a href=" {{ route('recycle.bin') }} "  class="btn btn-secondary mb-4"><i class="fa fa-trash"></i>recycle Bin</a>
 
             <table id="table-data" class="table table-bordered">
