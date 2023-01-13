@@ -28,6 +28,23 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/input-user', [App\Http\Controllers\AdminController::class, 'input'])->name('admin.input');
     Route::post('/admin/submit-data', [App\Http\Controllers\AdminController::class, 'submit_data'])->name('admin.submit');
+
+    Route::patch('admin/update-user', [App\Http\Controllers\AdminController::class, 'update_data'])->name('admin.update');
+    Route::get('admin/ajaxadmin/dataUser/{id}', [App\Http\Controllers\AdminController::class, 'getDataUser']);
+
+    
+    Route::post('admin/user/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('admin.user.delete');
+
+    
+    //Export PDF
+    Route::get('/exportPDF', [App\Http\Controllers\AdminController::class, 'exportPDF'])->name('admin.export');
+
+    
+    //Recycle bin
+    Route::get('/recycle_bin',[App\Http\Controllers\AdminController::class,'recycle_bin'])->name('recycle.bin');
+    Route::get('perawat/restore/{id?}', [App\Http\Controllers\AdminController::class,'restore']);
+    Route::get('perawat/delete/{id?}', [App\Http\Controllers\AdminController::class,'delete']);
+    
 });
 Route::middleware(['auth', 'perawat'])->group(function () {
 
@@ -57,6 +74,7 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
     Route::get('perawat/print_data_pasien', [App\Http\Controllers\PerawatController::class, 'print_data_pasien'])->name('perawat.print.pasien');
 });
+
 Route::middleware(['auth', 'dokter'])->group(function () {
 
     Route::get('/dokter', [App\Http\Controllers\DokterController::class, 'index'])->name('dokter.home');
