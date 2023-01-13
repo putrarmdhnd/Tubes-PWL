@@ -42,7 +42,7 @@
 </tr>
 </thead>
 @php $no=1; @endphp
- @foreach($pemeriksaan as $Pemeriksaan)
+ @foreach($periksa as $Pemeriksaan)
  <tr>
 <td>{{$no++}}</td>
 <td>{{$Pemeriksaan->nama_pasien}}</td>

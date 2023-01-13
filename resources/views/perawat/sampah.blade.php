@@ -8,13 +8,13 @@
     <div class="card card-default">
         <div class="card-header">{{ __('Recycle bin pemeriksaan') }}</div>
         <div class="pull-right">
-        <a href="{{ url ('perawat/delete')}}" class="btn btn-danger btn-sm">
+        <a href="{{ url ('perawat/delete_periksa/')}}" class="btn btn-danger btn-sm">
             <i class="fa fa-trash"></i> delete all
         </a>
-        <a href="{{ url ('perawat/restore')}}" class="btn btn-info btn-sm">
+        <a href="{{ url ('perawat/restore_pemeriksaan/')}}" class="btn btn-info btn-sm">
             <i class="fa fa-undo"></i> restore all
         </a>
-        <a href="{{ url ('perawat/input-pasien')}}" class="btn btn-secondary btn-sm">
+        <a href="{{ url ('data-pemeriksaan')}}" class="btn btn-secondary btn-sm">
             <i class="fa fa-chevron-left"></i> back
         </a>
         </div>
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody class="text-center">
                     @php $no=1; @endphp
-                    @foreach($pemeriksaan as $Pemeriksaan)
+                    @foreach($periksa as $Pemeriksaan)
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$Pemeriksaan->nama_pasien}}</td>
@@ -47,9 +47,14 @@
                             @else
                             {{ ('Tidak Dirawat') }}
                             @endif
-                        <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$Pemeriksaan->id}}', '{{$Pemeriksaan->nama_pasien}}')">Hapus</button>
+                            <td>
+                            <div class="btn-group text-center" role="group" aria-label="Basic example">
+                            <a href="{{ url ('perawat/restore_pemeriksaan/'.$Pemeriksaan->id)}}" class="btn btn-info btn-sm">
+                                 restore
+                            </a>
+                            <a href="{{ url ('perawat/delete_periksa/'.$Pemeriksaan->id)}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin mau menghapus?')">
+                                 hapus permanen
+                            </a>
                             </div>
                         </td>
                     </tr>

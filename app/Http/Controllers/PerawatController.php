@@ -180,16 +180,17 @@ class PerawatController extends Controller
     //pemeriksaan
     public function pemeriksaan_data(){
         $user   = Auth::user();
-        $pemeriksaan  = Pemeriksaan::all();
-        return view('perawat.data_pemeriksaan', compact('user', 'pemeriksaan'));
+        $periksa  = Pemeriksaan::all();
+        return view('perawat.data_pemeriksaan', compact('user', 'periksa'));
     }
+    
 
     public function delete_pemeriksaan($id)
     {
-        $pemeriksaan = Pemeriksaan::find($id);
+        $periksa = Pemeriksaan::find($id);
 
 
-        $pemeriksaan->delete();
+        $periksa->delete();
 
         $success = true;
         $message = "Data pasien berhasil dihapus";
@@ -203,18 +204,18 @@ class PerawatController extends Controller
     {
         $user   = Auth::user();
 
-        $pemeriksaan = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
-        return view('perawat.sampah', compact('user','pemeriksaan'));
+        $periksa = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.sampah', compact('user','periksa'));
     }
 
     public function restore_pemeriksaan($id = null)
     {
         if($id != null){
-            $pemeriksaan = Pemeriksaan::onlyTrashed()
+            $periksa = Pemeriksaan::onlyTrashed()
         ->where('id', $id)   
         ->restore();
         } else {
-            $pemeriksaan = Pemeriksaan::onlyTrashed()->restore();
+            $periksa = Pemeriksaan::onlyTrashed()->restore();
         }
         return redirect()->route('recycle.bin');
     }
@@ -222,23 +223,23 @@ class PerawatController extends Controller
     public function delete_periksa($id = null)
     {
         if($id != null){
-            $pemeriksaan = Pemeriksaan::onlyTrashed()
+            $periksa = Pemeriksaan::onlyTrashed()
             ->where('id', $id)   
             ->forceDelete();
             } else {
-                $pemeriksaan = Pemeriksaan::onlyTrashed()->forceDelete();
+                $periksa = Pemeriksaan::onlyTrashed()->forceDelete();
             }
             return redirect()->route('bin.recycle');
             
-            $pemeriksaan = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
-        return view('perawat.sampah', compact('user', 'pemeriksaan'));
+            $periksa = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.sampah', compact('user', 'periksa'));
     }
 
     public function exportpdf1(){
-        $pemeriksaan = Pemeriksaan::all();
+        $periksa = Pemeriksaan::all();
 
-        view()->share('pemeriksaan', $pemeriksaan);
+        view()->share('periksa', $periksa);
         $pdf1 = PDF::loadview('perawat/print-pemeriksaan');
-        return $pdf1->download('Data Pemeriksaan Pasien.pdf');
+        return $pdf1->download('Data pemeriksaan.pdf');
     }
 }

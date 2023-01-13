@@ -54,7 +54,7 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
 
     //halaman pemeriksaan
-    Route::post('perawat/pemeriksaan/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pemeriksaan']);
+    Route::post('perawat/periksa/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pemeriksaan']);
     Route::get('/recycle_bin_pemeriksaan',[App\Http\Controllers\PerawatController::class,'recycle_bin_pemeriksaan'])->name('bin.recycle');
     Route::get('perawat/restore_pemeriksaan/{id?}', [App\Http\Controllers\PerawatController::class,'restore_pemeriksaan']);
     Route::get('perawat/delete_periksa/{id?}', [App\Http\Controllers\PerawatController::class,'delete_periksa']);

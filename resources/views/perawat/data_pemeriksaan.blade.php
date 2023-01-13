@@ -25,7 +25,7 @@
                 </thead>
                 <tbody class="text-center">
                     @php $no=1; @endphp
-                    @foreach($pemeriksaan as $Pemeriksaan)
+                    @foreach($periksa as $Pemeriksaan)
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$Pemeriksaan->nama_pasien}}</td>
@@ -105,7 +105,7 @@ function deleteConfirmation(id, nama) {
 
                 $.ajax({
                     type: 'POST',
-                    url: "pemeriksaan/delete/" + id,
+                    url: "perawat/periksa/delete/" + id,
                     data: {
                         _token: CSRF_TOKEN
                     },
