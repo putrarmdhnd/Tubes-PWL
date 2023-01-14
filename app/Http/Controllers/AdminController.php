@@ -47,18 +47,18 @@ class AdminController extends Controller
         $password = $req->get('password');
         $hash_pass = Hash::make($password);
         
-        $Pengguna = new User; 
-        $Pengguna->nama = $req->get('nama');
-        $Pengguna->email = $req->get('email');
-        $Pengguna->no_hp = $req->get('no_hp');
-        $Pengguna->jabatan = $req->get('jabatan');
-        $Pengguna->password = $hash_pass;
-        $Pengguna->jk = $req->get('jk');
-        $Pengguna->umur = $req->get('umur');
-        $Pengguna->alamat = $req->get('alamat');
-        $Pengguna->roles_id = $req->get('roles_id');
+        $users = new User; 
+        $users->nama = $req->get('nama');
+        $users->email = $req->get('email');
+        $users->no_hp = $req->get('no_hp');
+        $users->jabatan = $req->get('jabatan');
+        $users->password = $hash_pass;
+        $users->jk = $req->get('jk');
+        $users->umur = $req->get('umur');
+        $users->alamat = $req->get('alamat');
+        $users->roles_id = $req->get('roles_id');
 
-        $Pengguna->save();
+        $users->save();
 
         $notification = array(
             'message' => 'Data buku berhasil ditambahkan',
@@ -67,15 +67,13 @@ class AdminController extends Controller
         return redirect()->route('admin.input')->with($notification);
     }
 
-    public function getDataUser($id)
-    {
-        $user1 = User::find($id);
+    public function getDataUser($id){
+        $users = User::find($id);
 
-        return response()->json($user1);
+        return response()->json($users);
     }
 
-    public function update_data(Request $req)
-    {
+    public function update_book(Request $req){
         $users = User::find($req->get('id'));
 
         $validate = $req->validate([
@@ -90,39 +88,33 @@ class AdminController extends Controller
             'roles_id' => 'required'
         ]);
 
-        $password = $req->get('password');
-        $hash_pass = Hash::make($password);
-        
-        $Pengguna = new User; 
-        $Pengguna->nama = $req->get('nama');
-        $Pengguna->email = $req->get('email');
-        $Pengguna->no_hp = $req->get('no_hp');
-        $Pengguna->jabatan = $req->get('jabatan');
-        $Pengguna->password = $hash_pass;
-        $Pengguna->jk = $req->get('jk');
-        $Pengguna->umur = $req->get('umur');
-        $Pengguna->alamat = $req->get('alamat');
-        $Pengguna->roles_id = $req->get('roles_id');
+        $users->nama = $req->get('nama');
+        $users->email = $req->get('email');
+        $users->no_hp = $req->get('no_hp');
+        $users->jabatan = $req->get('jabatan');
+        $users->password = $req->get('password');
+        $users->jk = $req->get('jk');
+        $users->umur = $req->get('umur');
+        $users->alamat = $req->get('alamat');
+        $users->roles_id = $req->get('roles_id');
 
-        $Pengguna->save();
+
+        $users->save();
 
         $notification = array(
             'message' => 'Data buku berhasil diubah',
             'alert-type' => 'success'
         );
         return redirect()->route('admin.input')->with($notification);
-        
     }
 
-    public function delete_user($id)
-    {
+    public function delete_user($id){
         $users = User::find($id);
-
 
         $users->delete();
 
         $success = true;
-        $message = "Data user berhasil dihapus";
+        $message = "Data buku berhasil dihapus";
 
         return response()->json([
             'success' => $success,
@@ -138,38 +130,38 @@ class AdminController extends Controller
         return $pdf->download('data.pdf');
     }
 
-    public function recycle_bin()
-    {
-        $user   = Auth::user();
+    // public function recycle_bin()
+    // {
+    //     $user   = Auth::user();
 
-        $users = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
-        return view('admin.trash', compact('user','users'));
-    }
+    //     $users = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
+    //     return view('admin.trash', compact('user','users'));
+    // }
 
-    public function restore($id = null)
-    {
-        if($id != null){
-        $users = User::onlyTrashed()
-        ->where('id', $id)   
-        ->restore();
-        } else {
-            $users = User::onlyTrashed()->restore();
-        }
-        return redirect()->route('recycle.bin');
-    }
+    // public function restore($id = null)
+    // {
+    //     if($id != null){
+    //     $users = User::onlyTrashed()
+    //     ->where('id', $id)   
+    //     ->restore();
+    //     } else {
+    //         $users = User::onlyTrashed()->restore();
+    //     }
+    //     return redirect()->route('recycle.bin');
+    // }
 
-    public function delete($id = null)
-    {
-        if($id != null){
-            $users = User::onlyTrashed()
-            ->where('id', $id)   
-            ->forceDelete();
-            } else {
-                $users = Users::onlyTrashed()->forceDelete();
-            }
-            return redirect()->route('recycle.bin');
+    // public function delete($id = null)
+    // {
+    //     if($id != null){
+    //         $users = User::onlyTrashed()
+    //         ->where('id', $id)   
+    //         ->forceDelete();
+    //         } else {
+    //             $users = Users::onlyTrashed()->forceDelete();
+    //         }
+    //         return redirect()->route('recycle.bin');
             
-        $users  = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
-        return view('admin.trash', compact('user', 'users'));
-    }
+    //     $users  = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
+    //     return view('admin.trash', compact('user', 'users'));
+    // }
 }

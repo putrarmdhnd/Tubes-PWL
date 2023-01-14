@@ -29,22 +29,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/input-user', [App\Http\Controllers\AdminController::class, 'input'])->name('admin.input');
     Route::post('/admin/submit-data', [App\Http\Controllers\AdminController::class, 'submit_data'])->name('admin.submit');
 
-    Route::patch('admin/update-user', [App\Http\Controllers\AdminController::class, 'update_data'])->name('admin.update');
+    Route::patch('admin/users/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update')->middleware('is_admin');
     Route::get('admin/ajaxadmin/dataUser/{id}', [App\Http\Controllers\AdminController::class, 'getDataUser']);
 
-    
-    Route::post('admin/user/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('admin.user.delete');
 
+    
     
     //Export PDF
     Route::get('/exportPDF', [App\Http\Controllers\AdminController::class, 'exportPDF'])->name('admin.export');
 
     
-    //Recycle bin
-    Route::get('/recycle_bin',[App\Http\Controllers\AdminController::class,'recycle_bin'])->name('recycle.bin');
-    Route::get('perawat/restore/{id?}', [App\Http\Controllers\AdminController::class,'restore']);
-    Route::get('perawat/delete/{id?}', [App\Http\Controllers\AdminController::class,'delete']);
-    
+    Route::post('admin/users/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('admin.user.delete');
+
 });
 Route::middleware(['auth', 'perawat'])->group(function () {
 
