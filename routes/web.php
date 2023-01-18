@@ -29,7 +29,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/input-user', [App\Http\Controllers\AdminController::class, 'input'])->name('admin.input');
     Route::post('/admin/submit-data', [App\Http\Controllers\AdminController::class, 'submit_data'])->name('admin.submit');
 
-    Route::patch('admin/users/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update')->middleware('is_admin');
+    Route::patch('admin/users/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update');
     Route::get('admin/ajaxadmin/dataUser/{id}', [App\Http\Controllers\AdminController::class, 'getDataUser']);
 
 

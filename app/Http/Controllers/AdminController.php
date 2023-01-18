@@ -73,7 +73,7 @@ class AdminController extends Controller
         return response()->json($user_data);
     }
 
-    public function update_book(Request $req){
+    public function update_user(Request $req){
         $users = User::find($req->get('id'));
 
         $validate = $req->validate([
@@ -87,12 +87,14 @@ class AdminController extends Controller
             'alamat' => 'required',
             'roles_id' => 'required'
         ]);
+        $password = $req->get('password');
+        $hash_pass = Hash::make($password);
 
         $users->nama = $req->get('nama');
         $users->email = $req->get('email');
         $users->no_hp = $req->get('no_hp');
         $users->jabatan = $req->get('jabatan');
-        $users->password = $req->get('password');
+        $users->password = $hash_pass;
         $users->jk = $req->get('jk');
         $users->umur = $req->get('umur');
         $users->alamat = $req->get('alamat');

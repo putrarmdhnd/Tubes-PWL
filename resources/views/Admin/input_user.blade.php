@@ -59,7 +59,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{{ route('perawat.submit') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('admin.submit') }}" enctype="multipart/form-data">
           @csrf
           <div class="row g-3">
             <div class="col-md-6">
@@ -87,9 +87,14 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
-                <label for="penerbit">JABATAN</label>
-                <input type="text" class="form-control" name="jabatan" id="jabatan" required />
+            <div class="form-group">
+                <label for="roles_id">ROLE</label><br>
+                <select class="form-select " aria-label=".form-select-lg example" name="roles_id" id="roles_id" required>
+                  <option selected>Pilih Role</option>
+                  <option value="1">Admin</option>
+                  <option value="2">Perawat</option>
+                  <option value="3">Dokter</option>
+                </select>
               </div>
             </div>
             <div class="col-md-6">
@@ -109,20 +114,15 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
-                <label for="cover">ALAMAT</label>
-                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
+            <div class="form-group">
+                <label for="penerbit">JABATAN</label>
+                <input type="text" class="form-control" name="jabatan" id="jabatan" required />
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="roles_id">ROLE</label><br>
-                <select class="form-select " aria-label=".form-select-lg example" name="roles_id" id="roles_id" required>
-                  <option selected>Pilih Role</option>
-                  <option value="1">Admin</option>
-                  <option value="2">Perawat</option>
-                  <option value="3">Dokter</option>
-                </select>
+            <div class="col-md-12">
+            <div class="form-group">
+                <label for="cover">ALAMAT</label>
+                <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="alamat"></textarea>
               </div>
             </div>
           </div>
@@ -175,9 +175,14 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
-                <label for="penerbit">JABATAN</label>
-                <input type="text" class="form-control" name="jabatan" id="edit-jabatan" required />
+            <div class="form-group">
+                <label for="roles_id">ROLE</label><br>
+                <select class="form-select " aria-label=".form-select-lg example" name="roles_id" id="edit-roles_id" required>
+                  <option selected>Pilih Role</option>
+                  <option value="1">Admin</option>
+                  <option value="2">Perawat</option>
+                  <option value="3">Dokter</option>
+                </select>
               </div>
             </div>
             <div class="col-md-6">
@@ -197,21 +202,16 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
+            <div class="form-group">
+                <label for="penerbit">JABATAN</label>
+                <input type="text" class="form-control" name="jabatan" id="edit-jabatan" required />
+              </div>
+              </div>
+            <div class="col-md-12">
+            <div class="form-group">
                 <label for="cover">ALAMAT</label>
                 <textarea class="form-control" placeholder="Masukan Alamat" name="alamat" id="edit-alamat"></textarea>
-              </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="roles_id">ROLE</label><br>
-                <select class="form-select " aria-label=".form-select-lg example" name="roles_id" id="edit-roles_id" required>
-                  <option selected>Pilih Role</option>
-                  <option value="1">Admin</option>
-                  <option value="2">Perawat</option>
-                  <option value="3">Dokter</option>
-                </select>
-              </div>
             </div>
           </div>
 
