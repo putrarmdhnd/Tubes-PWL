@@ -42,8 +42,8 @@
                     </a>
                 </li>
                 <li class="nav-item pt-3">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="/data-dokter" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             Data Dokter
                         </p>

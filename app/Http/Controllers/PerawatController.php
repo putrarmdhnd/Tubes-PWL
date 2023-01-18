@@ -133,6 +133,27 @@ class PerawatController extends Controller
         ]);
     }
 
+
+
+    public function pemeriksaan_data(){
+        $user   = Auth::user();
+        $pemeriksaan  = Pemeriksaan::all();
+        return view('perawat.data_pemeriksaan', compact('user', 'pemeriksaan'));
+    }
+
+    public function dokter_data(){
+        $user   = Auth::user();
+        $dokter  = User::where('roles_id', 3)->get();
+        return view('perawat.data_dokter', compact('user', 'dokter'));
+    }
+    public function sortir_pasien($id){
+        $user   = Auth::user();
+
+        $sortir = User::find($id)->sortir_pasien;
+        return view('perawat.data_pasien_sortir', compact('user', 'sortir'));
+    }
+
+
     public function exportpdf(){
         $pasien = PendataanPasien::all();
 

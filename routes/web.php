@@ -42,7 +42,9 @@ Route::middleware(['auth', 'perawat'])->group(function () {
     Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien'])->name('admin.book.delete');
 
     Route::get('/data-pemeriksaan', [App\Http\Controllers\PerawatController::class, 'pemeriksaan_data'])->name('pemeriksaan.home');
-    
+
+    Route::get('/data-dokter', [App\Http\Controllers\PerawatController::class, 'dokter_data'])->name('dokter.home');
+    Route::get('/{id}/pasien', [App\Http\Controllers\PerawatController::class, 'sortir_pasien']);
     
     //pdf
     Route::get('/exportpdf', [App\Http\Controllers\PerawatController::class, 'exportpdf'])->name('perawat.export');
