@@ -75,7 +75,12 @@ class PerawatController extends Controller
     }
 
    
+    public function getDataPasien($id){
+        $pasien1 = PendataanPasien::find($id);
 
+        return response()->json($pasien1);
+    }
+    
     public function update_data(Request $req)
     {
         $pasien = PendataanPasien::find($req->get('id'));
@@ -133,13 +138,6 @@ class PerawatController extends Controller
         ]);
     }
 
-
-
-    public function pemeriksaan_data(){
-        $user   = Auth::user();
-        $pemeriksaan  = Pemeriksaan::all();
-        return view('perawat.data_pemeriksaan', compact('user', 'pemeriksaan'));
-    }
 
     public function dokter_data(){
         $user   = Auth::user();
@@ -262,5 +260,13 @@ class PerawatController extends Controller
         view()->share('periksa', $periksa);
         $pdf1 = PDF::loadview('perawat/print-pemeriksaan');
         return $pdf1->download('Data pemeriksaan.pdf');
+    }
+
+    //Rawat Inap
+
+    public function data_rawat_inap(){
+        $user   = Auth::user();
+        $periksa  = Pemeriksaan::all();
+        return view('perawat.data_pemeriksaan', compact('user', 'periksa'));
     }
 }

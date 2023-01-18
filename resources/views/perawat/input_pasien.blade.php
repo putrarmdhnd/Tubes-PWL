@@ -41,7 +41,7 @@
                         <td>{{$PendataanPasien->BBadan}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btn-edit-pasien" class="btn btn-success " data-toggle="modal" data-target="#editBukuModal" data-id="{{ $PendataanPasien->id }}">Edit</button>
+                                <button type="button" id="btn-edit-pasien" class="btn btn-success " data-toggle="modal" data-target="#editPasienModal" data-id="{{ $PendataanPasien->id }}">Edit</button>
                                 <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$PendataanPasien->id}}', '{{$PendataanPasien->nama}}')">Hapus</button>
                             </div>
                         </td>
@@ -262,8 +262,6 @@
 
         $(document).on('click', '#btn-edit-pasien', function() {
             let id = $(this).data('id');
-
-            $('#image-area').empty();
 
             $.ajax({
                 type: "get",

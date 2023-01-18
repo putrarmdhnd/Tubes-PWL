@@ -8,9 +8,9 @@
   <div class="card card-default">
     <div class="card-header">{{ __('Pengelolaan Buku') }}</div>
     <div class="card-body">
-      <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
-      <a href="/exportPDF"  class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
-     <table id="table-data" class="table table-bordered">
+      <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#tambahUserModal"><i class="fa fa-plus"></i>Tambah Data</button>
+      <a href="/exportPDF" class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+      <table id="table-data" class="table table-bordered">
         <thead>
           <tr class="text-center">
             <th>NO</th>
@@ -38,9 +38,9 @@
             <td>{{$user->alamat}}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" id="btn-edit-buku" class="btn btn-success " data-toggle="modal" data-target="#editBukuModal" data-id="{{ $user->id }}">Edit</button>
-              <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$user->id}}', '{{$user->nama}}' )">Hapus</button>
-             </div>
+                <button type="button" id="btn-edit-buku" class="btn btn-success " data-toggle="modal" data-target="#ediUserModal" data-id="{{ $user->id }}">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$user->id}}', '{{$user->nama}}' )">Hapus</button>
+              </div>
             </td>
           </tr>
           @endforeach
@@ -51,15 +51,15 @@
 </div>
 
 <!--  TAMBAH DATA BUKU MODAL   -->
-<div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="tambahUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLable">Tambah Data Buku</h3>
+        <h3 class="modal-title" id="exampleModalLable">Tambah Data Pasien</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{{ route('admin.submit') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('perawat.submit') }}" enctype="multipart/form-data">
           @csrf
           <div class="row g-3">
             <div class="col-md-6">
@@ -124,10 +124,13 @@
                   <option value="3">Dokter</option>
                 </select>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Kirim</button>
-              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+          </div>
         </form>
       </div>
     </div>
@@ -135,18 +138,18 @@
 </div>
 
 <!--  UPDATE DATA BUKU MODAL   -->
-<div class="modal fade" id="editBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLable">Edit Data Buku</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="{{ route('admin.user.update') }}" enctype="multipart/form-data">
-                    @csrf
-                    @method('PATCH')
-                    <div class="row g-3">
+<div class="modal fade" id="ediUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLable">Edit Data Buku</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{{ route('admin.user.update') }}" enctype="multipart/form-data">
+          @csrf
+          @method('PATCH')
+          <div class="row g-3">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="nama">Nama Lengkap</label>
@@ -209,94 +212,94 @@
                   <option value="3">Dokter</option>
                 </select>
               </div>
-              <div class="modal-footer">
-                        <input type="hidden" name="id" id="edit-id">
-                        <!--<input type="hidden" name="old_cover" id="edit-old-cover">-->
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
-              </div>
-                </form>
             </div>
-        </div>
+          </div>
+
+          <div class="modal-footer">
+            <input type="hidden" name="id" id="edit-id">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 @endsection
 
 @section('js')
 <script>
-    $(function() {
+  $(function() {
 
-        $(document).on('click', '#btn-edit-buku', function() {
-            let id = $(this).data('id');
+    $(document).on('click', '#btn-edit-buku', function() {
+      let id = $(this).data('id');
 
-            $('#image-area').empty();
+      $.ajax({
+        type: "get",
+        url: "{{ url('/admin/ajaxadmin/dataUser')}}/" + id,
+        dataType: 'json',
+        success: function(res) {
 
-            $.ajax({
-                type: "get",
-                url: "{{ url('/admin/ajaxadmin/dataUser')}}/" + id,
-                dataType: 'json',
-                success: function(res) {
-                  
-                    $('#edit-nama').val(res.nama);
-                    $('#edit-email').val(res.umur);
-                    $('#edit-no_hp').val(res.NoKtp);
-                    $('#edit-jabatan').val(res.jk);
-                    $('#edit-password').val(res.agama);
-                    $('#edit-jk').val(res.goldar);
-                    $('#edit-umur').val(res.pekerjaan);
-                    $('#edit-alamat').val(res.NoTlp);
-                    $('#edit-roles_id').val(res.email);
-                    $('#edit-id').val(res.id);
+          $('#edit-nama').val(res.nama);
+          $('#edit-email').val(res.umur);
+          $('#edit-no_hp').val(res.no_hp);
+          $('#edit-jabatan').val(res.jabatan);
+          $('#edit-password').val(res.password);
+          $('#edit-jk').val(res.jk);
+          $('#edit-umur').val(res.umur);
+          $('#edit-alamat').val(res.alamat);
+          $('#edit-roles_id').val(res.roles_id);
+          $('#edit-id').val(res.id);
 
-                    
-                },
-            });
-        });
+
+        },
+      });
     });
+  });
 
-    function deleteConfirmation(npm, judul) {
-        swal.fire({
-            title: "Hapus?",
-            type: 'warning',
-            text: "Apakah anda yakin akan menghapus data buku dengan judul " + judul + "!?",
+  function deleteConfirmation(npm, judul) {
+    swal.fire({
+      title: "Hapus?",
+      type: 'warning',
+      text: "Apakah anda yakin akan menghapus data buku dengan judul " + judul + "!?",
 
-            showCancelButton: !0,
-            confirmButtonText: "Ya, lakukan!",
-            cancelButtonText: "Tidak, batalkan!",
-            reverseButtons: !0
-        }).then(function(e) {
+      showCancelButton: !0,
+      confirmButtonText: "Ya, lakukan!",
+      cancelButtonText: "Tidak, batalkan!",
+      reverseButtons: !0
+    }).then(function(e) {
 
-            if (e.value === true) {
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      if (e.value === true) {
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-                $.ajax({
-                    type: 'POST',
-                    url: "users/delete/" + npm,
-                    data: {
-                        _token: CSRF_TOKEN
-                    },
-                    dataType: 'JSON',
-                    success: function(results) {
-                        if (results.success === true) {
-                            swal.fire("Done!", results.massage, "success");
+        $.ajax({
+          type: 'POST',
+          url: "users/delete/" + npm,
+          data: {
+            _token: CSRF_TOKEN
+          },
+          dataType: 'JSON',
+          success: function(results) {
+            if (results.success === true) {
+              swal.fire("Done!", results.massage, "success");
 
-                            //referesh page after 2 seconds
-                            setTimeout(function() {
-                                location.reload();
-                            }, 1000);
-                        } else {
-                            swal.fire("Error!", results.message, "error");
-                        }
-                    }
-                });
-
+              //referesh page after 2 seconds
+              setTimeout(function() {
+                location.reload();
+              }, 1000);
             } else {
-                e.dismiss;
+              swal.fire("Error!", results.message, "error");
             }
-        }, function(dismiss) {
-            return false;
+          }
         });
-    }
+
+      } else {
+        e.dismiss;
+      }
+    }, function(dismiss) {
+      return false;
+    });
+  }
 </script>
 @stop

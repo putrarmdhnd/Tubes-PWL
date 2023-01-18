@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Notifications\RegisteredUserNotification;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -68,9 +68,9 @@ class AdminController extends Controller
     }
 
     public function getDataUser($id){
-        $users = User::find($id);
+        $user_data = User::find($id);
 
-        return response()->json($users);
+        return response()->json($user_data);
     }
 
     public function update_book(Request $req){

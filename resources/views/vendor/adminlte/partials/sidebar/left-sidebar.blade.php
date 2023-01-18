@@ -57,6 +57,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item pt-3">
+                        <a href="{{ route('pemeriksaan.home') }}" class="nav-link">
+                            <i class="nav-icon fas fa-folder"></i>
+                            <p>
+                                Data Rawat Inap
+                            </p>
+                        </a>
+                    </li>
                     @elseif($user->roles_id == 3)
                     <li class="nav-item pt-3">
                         <a href="{{ route('dokter.pemeriksaan') }}" class="nav-link">
