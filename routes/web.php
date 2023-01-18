@@ -55,7 +55,12 @@ Route::middleware(['auth', 'perawat'])->group(function () {
     Route::get('perawat/delete/{id?}', [App\Http\Controllers\PerawatController::class,'delete']);
 
 
-    Route::get('perawat/print_data_pasien', [App\Http\Controllers\PerawatController::class, 'print_data_pasien'])->name('perawat.print.pasien');
+    //halaman pemeriksaan
+    Route::post('perawat/periksa/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pemeriksaan']);
+    Route::get('/recycle_bin_pemeriksaan',[App\Http\Controllers\PerawatController::class,'recycle_bin_pemeriksaan'])->name('bin.recycle');
+    Route::get('perawat/restore_pemeriksaan/{id?}', [App\Http\Controllers\PerawatController::class,'restore_pemeriksaan']);
+    Route::get('perawat/delete_periksa/{id?}', [App\Http\Controllers\PerawatController::class,'delete_periksa']);
+    Route::get('/exportpdf1', [App\Http\Controllers\PerawatController::class, 'exportpdf1'])->name('perawat.export1');
 });
 Route::middleware(['auth', 'dokter'])->group(function () {
 

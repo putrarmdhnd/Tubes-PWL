@@ -74,12 +74,7 @@ class PerawatController extends Controller
         return redirect()->route('perawat.input')->with($notification);
     }
 
-    public function getDataPasien($id)
-    {
-        $pasien1 = PendataanPasien::find($id);
-
-        return response()->json($pasien1);
-    }
+   
 
     public function update_data(Request $req)
     {
@@ -159,15 +154,15 @@ class PerawatController extends Controller
     }
 
 
-    
     public function exportpdf(){
         $pasien = PendataanPasien::all();
 
         view()->share('pasien', $pasien);
         $pdf = PDF::loadview('perawat/print-pdf');
+        return $pdf->download('Data Pasien.pdf');
     }
 
-    }
+    
     public function recycle_bin()
     {
         $user   = Auth::user();
@@ -201,5 +196,71 @@ class PerawatController extends Controller
             
         $pasien  = PendataanPasien::onlyTrashed()->get(); // menarik semua (all) data dari models 
         return view('perawat.trash', compact('user', 'pasien'));
+    }
+
+    //pemeriksaan
+    public function pemeriksaan_data(){
+        $user   = Auth::user();
+        $periksa  = Pemeriksaan::all();
+        return view('perawat.data_pemeriksaan', compact('user', 'periksa'));
+    }
+    
+
+    public function delete_pemeriksaan($id)
+    {
+        $periksa = Pemeriksaan::find($id);
+
+
+        $periksa->delete();
+
+        $success = true;
+        $message = "Data pasien berhasil dihapus";
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
+    }
+    public function recycle_bin_pemeriksaan()
+    {
+        $user   = Auth::user();
+
+        $periksa = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.sampah', compact('user','periksa'));
+    }
+
+    public function restore_pemeriksaan($id = null)
+    {
+        if($id != null){
+            $periksa = Pemeriksaan::onlyTrashed()
+        ->where('id', $id)   
+        ->restore();
+        } else {
+            $periksa = Pemeriksaan::onlyTrashed()->restore();
+        }
+        return redirect()->route('recycle.bin');
+    }
+
+    public function delete_periksa($id = null)
+    {
+        if($id != null){
+            $periksa = Pemeriksaan::onlyTrashed()
+            ->where('id', $id)   
+            ->forceDelete();
+            } else {
+                $periksa = Pemeriksaan::onlyTrashed()->forceDelete();
+            }
+            return redirect()->route('bin.recycle');
+            
+            $periksa = Pemeriksaan::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.sampah', compact('user', 'periksa'));
+    }
+
+    public function exportpdf1(){
+        $periksa = Pemeriksaan::all();
+
+        view()->share('periksa', $periksa);
+        $pdf1 = PDF::loadview('perawat/print-pemeriksaan');
+        return $pdf1->download('Data pemeriksaan.pdf');
     }
 }
