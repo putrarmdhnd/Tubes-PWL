@@ -38,7 +38,7 @@
             <td>{{$user->alamat}}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" id="btn-edit-buku" class="btn btn-success " data-toggle="modal" data-target="#ediUserModal" data-id="{{ $user->id }}">Edit</button>
+                <button type="button" id="btn-edit-user" class="btn btn-success " data-toggle="modal" data-target="#ediUserModal" data-id="{{ $user->id }}">Edit</button>
                 <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$user->id}}', '{{$user->nama}}' )">Hapus</button>
               </div>
             </td>
@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<!--  TAMBAH DATA BUKU MODAL   -->
+<!--  TAMBAH DATA USER MODAL   -->
 <div class="modal fade" id="tambahUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -137,12 +137,12 @@
   </div>
 </div>
 
-<!--  UPDATE DATA BUKU MODAL   -->
+<!--  UPDATE DATA USER MODAL   -->
 <div class="modal fade" id="ediUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLable">Edit Data Buku</h3>
+        <h3 class="modal-title" id="exampleModalLable">Edit Data User</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -232,7 +232,7 @@
 <script>
   $(function() {
 
-    $(document).on('click', '#btn-edit-buku', function() {
+    $(document).on('click', '#btn-edit-user', function() {
       let id = $(this).data('id');
 
       $.ajax({
@@ -258,11 +258,11 @@
     });
   });
 
-  function deleteConfirmation(npm, judul) {
+  function deleteConfirmation(id, nama) {
     swal.fire({
       title: "Hapus?",
       type: 'warning',
-      text: "Apakah anda yakin akan menghapus data buku dengan judul " + judul + "!?",
+      text: "Apakah anda yakin akan menghapus data user dengan nama " + nama + "!?",
 
       showCancelButton: !0,
       confirmButtonText: "Ya, lakukan!",
@@ -275,7 +275,7 @@
 
         $.ajax({
           type: 'POST',
-          url: "users/delete/" + npm,
+          url: "users/delete/" + id,
           data: {
             _token: CSRF_TOKEN
           },

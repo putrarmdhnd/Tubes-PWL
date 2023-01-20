@@ -8,8 +8,6 @@
     <div class="card card-default">
         <div class="card-header">{{ __('Data Pasien Sortir') }}</div>
         <div class="card-body">
-            <a href=" {{ route('perawat.export') }} " class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
-            <a href=" {{ route('recycle.bin') }} " class="btn btn-secondary mb-4"><i class="fa fa-trash"></i>recycle Bin</a>
             <a href="{{ url ('/data-dokter')}}" class="btn btn-secondary btn-sm mb-4">
                 <i class="fa fa-chevron-left"></i> back
             </a>

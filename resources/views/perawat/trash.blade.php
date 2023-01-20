@@ -6,7 +6,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="card card-default">
-        <div class="card-header">{{ __('Recycle_bin') }}</div>
+        <div class="card-header">{{ __('Recycle_bin Pasien') }}</div>
         <div class="pull-right">
         <a href="{{ url ('perawat/delete')}}" class="btn btn-danger btn-sm">
             <i class="fa fa-trash"></i> delete all
