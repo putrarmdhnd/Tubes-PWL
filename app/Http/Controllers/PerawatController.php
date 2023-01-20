@@ -307,4 +307,58 @@ class PerawatController extends Controller
 
         return redirect()->route('perawatan.home')->with($notification);
     }
+    public function delete_rawatInap($id)
+    {
+        $rawat_inap  = RawatInap::find($id);
+
+
+        $rawat_inap->delete();
+
+        $success = true;
+        $message = "Data pasien berhasil dihapus";
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
+    }
+    public function recycle_bin_rawatinap()
+    {
+        $user   = Auth::user();
+
+        $rawat_inap  = RawatInap::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.trash1', compact('user','rawat_inap'));
+    }
+    public function restore_rawatinap($id = null)
+    {
+        if($id != null){
+            $rawat_inap  = RawatInap::onlyTrashed()
+        ->where('id', $id)   
+        ->restore();
+        } else {
+            $rawat_inap  = RawatInap::onlyTrashed()->restore();
+        }
+        return redirect()->route('rawatinap.recycle');
+    }
+    public function delete_rawatinapPermanen($id = null)
+    {
+        if($id != null){
+            $rawat_inap  = RawatInap::onlyTrashed()
+            ->where('id', $id)   
+            ->forceDelete();
+            } else {
+                $rawat_inap  = RawatInap::onlyTrashed()->forceDelete();
+            }
+            return redirect()->route('rawatinap.recycle');
+            
+            $rawat_inap  = RawatInap::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('perawat.trash1', compact('user', 'rawat_inap'));
+    }
+    public function exportpdf2(){
+        $rawat_inap  = RawatInap::all();
+
+        view()->share('rawat_inap', $rawat_inap);
+        $pdf2 = PDF::loadview('perawat/print-rawatinap');
+        return $pdf2->download('Data rawat inap.pdf');
+    }
 }

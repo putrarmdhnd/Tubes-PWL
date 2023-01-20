@@ -8,8 +8,8 @@
     <div class="card card-default">
         <div class="card-header">{{ __('Data Hasil Input RawatInap') }}</div>
         <div class="card-body">
-            <a href="/exportpdf" class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
-            <a href=" {{ route('recycle.bin') }} " class="btn btn-secondary mb-4"><i class="fa fa-trash"></i>recycle Bin</a>
+            <a href="/exportpdf2" class="btn btn-info mb-4"><i class="fa fa-print"></i>Cetak PDF</a>
+            <a href=" {{ route('rawatinap.recycle') }} " class="btn btn-secondary mb-4"><i class="fa fa-trash"></i>recycle Bin</a>
             <table id="table-data" class="table table-bordered">
                 <thead>
                     <tr class="text-center">
@@ -32,7 +32,7 @@
                         <td>{{$rawat_inaps->nama_ruangan}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" id="btn-input-rawat" class="btn btn-danger " data-toggle="modal" data-target="#InputRawatInap" data-id="">Delete</button>
+                            <button type="button" class="btn btn-danger" onclick="deleteConfirmation(' {{$rawat_inaps->id}}', '{{$rawat_inaps->nama_pasien}}')">Hapus</button>
                             </div>
                         </td>
                     </tr>
@@ -128,7 +128,7 @@
         });
     });
 
-    function deleteConfirmation(npm, nama) {
+    function deleteConfirmation(id, nama) {
         swal.fire({
             title: "Hapus?",
             type: 'warning',
@@ -145,7 +145,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: "pasien/delete/" + npm,
+                    url: "/perawat/rawatInap/delete/" + id,
                     data: {
                         _token: CSRF_TOKEN
                     },

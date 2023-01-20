@@ -49,7 +49,7 @@ Route::middleware(['auth', 'perawat'])->group(function () {
     Route::patch('perawat/update-pasien', [App\Http\Controllers\PerawatController::class, 'update_data'])->name('perawat.update');
     Route::get('perawat/ajaxadmin/dataPasien/{id}', [App\Http\Controllers\PerawatController::class, 'getDataPasien']);
 
-    Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien'])->name('admin.book.delete');
+    Route::post('perawat/pasien/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_pasien']);
 
     Route::get('/data-dokter', [App\Http\Controllers\PerawatController::class, 'dokter_data'])->name('dokter.home');
     Route::get('/{id}/pasien', [App\Http\Controllers\PerawatController::class, 'sortir_pasien']);
@@ -77,6 +77,13 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
     Route::get('perawat/ajaxadmin/dataRawatInap/{id}', [App\Http\Controllers\PerawatController::class, 'getDataRawatInap']);
     Route::post('/perawat/input-RawatInap', [App\Http\Controllers\PerawatController::class, 'input_rawat_inap'])->name('input.rawat_inap');
+
+    Route::get('/exportpdf2', [App\Http\Controllers\PerawatController::class, 'exportpdf2'])->name('perawat.export2');
+
+Route::post('perawat/rawatInap/delete/{id}', [App\Http\Controllers\PerawatController::class, 'delete_rawatInap']);
+    Route::get('/recycle_bin_rawatinap',[App\Http\Controllers\PerawatController::class,'recycle_bin_rawatinap'])->name('rawatinap.recycle');
+    Route::get('perawat/restore_rawatinap/{id?}', [App\Http\Controllers\PerawatController::class,'restore_rawatinap']);
+    Route::get('perawat/delete_rawatinapPermanen/{id?}', [App\Http\Controllers\PerawatController::class,'delete_rawatinapPermanen']);
     
 });
 
