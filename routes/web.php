@@ -32,9 +32,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::patch('admin/users/update', [App\Http\Controllers\AdminController::class, 'update_user'])->name('admin.user.update')->middleware('is_admin');
     Route::get('admin/ajaxadmin/dataUser/{id}', [App\Http\Controllers\AdminController::class, 'getDataUser']);
 
-
-    
-    
     //Export PDF
     Route::get('/exportPDF', [App\Http\Controllers\AdminController::class, 'exportPDF'])->name('admin.export');
 
@@ -75,7 +72,7 @@ Route::middleware(['auth', 'perawat'])->group(function () {
     Route::get('/exportpdf1', [App\Http\Controllers\PerawatController::class, 'exportpdf1'])->name('perawat.export1');
 
     //halaman rawat inap
-    Route::get('/data-pemeriksaan', [App\Http\Controllers\PerawatController::class, 'pemeriksaan_data'])->name('pemeriksaan.home');
+    Route::get('/data-perawatan', [App\Http\Controllers\PerawatController::class, 'perawatan_data'])->name('perawatan.home');
     
 });
 

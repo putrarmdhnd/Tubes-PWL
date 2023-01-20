@@ -264,9 +264,9 @@ class PerawatController extends Controller
 
     //Rawat Inap
 
-    public function data_rawat_inap(){
+    public function perawatan_data(){
         $user   = Auth::user();
-        $periksa  = Pemeriksaan::all();
-        return view('perawat.data_pemeriksaan', compact('user', 'periksa'));
+        $perawatan  = Pemeriksaan::where('status_dirawat', 1)->get();
+        return view('perawat.data_rawat_inap', compact('user', 'perawatan'));
     }
 }

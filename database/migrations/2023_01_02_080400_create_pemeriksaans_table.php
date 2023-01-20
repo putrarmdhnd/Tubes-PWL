@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pemeriksaans', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->autoIncrement();
             $table->string('keluhan')->bigstring();
             $table->string('keterangan_penyakit');
             $table->string('resep_obat');

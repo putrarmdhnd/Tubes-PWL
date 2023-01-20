@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item pt-3">
-                        <a href="{{ route('pemeriksaan.home') }}" class="nav-link">
+                        <a href="{{ route('perawatan.home') }}" class="nav-link">
                             <i class="nav-icon fas fa-folder"></i>
                             <p>
                                 Data Rawat Inap

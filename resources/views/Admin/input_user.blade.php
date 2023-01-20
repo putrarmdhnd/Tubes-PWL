@@ -59,7 +59,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{{ route('perawat.submit') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('admin.submit') }}" enctype="multipart/form-data">
           @csrf
           <div class="row g-3">
             <div class="col-md-6">
