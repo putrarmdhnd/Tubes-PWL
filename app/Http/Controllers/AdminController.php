@@ -132,38 +132,38 @@ class AdminController extends Controller
         return $pdf->download('data.pdf');
     }
 
-    // public function recycle_bin()
-    // {
-    //     $user   = Auth::user();
+     public function recycle_bin()
+     {
+         $user   = Auth::user();
 
-    //     $users = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
-    //     return view('admin.trash', compact('user','users'));
-    // }
+         $users = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
+         return view('admin.trash', compact('user','users'));
+     }
 
-    // public function restore($id = null)
-    // {
-    //     if($id != null){
-    //     $users = User::onlyTrashed()
-    //     ->where('id', $id)   
-    //     ->restore();
-    //     } else {
-    //         $users = User::onlyTrashed()->restore();
-    //     }
-    //     return redirect()->route('recycle.bin');
-    // }
+     public function restore($id = null)
+     {
+         if($id != null){
+         $users = User::onlyTrashed()
+         ->where('id', $id)   
+         ->restore();
+         } else {
+             $users = User::onlyTrashed()->restore();
+         }
+         return redirect()->route('recycle.bin');
+     }
 
-    // public function delete($id = null)
-    // {
-    //     if($id != null){
-    //         $users = User::onlyTrashed()
-    //         ->where('id', $id)   
-    //         ->forceDelete();
-    //         } else {
-    //             $users = Users::onlyTrashed()->forceDelete();
-    //         }
-    //         return redirect()->route('recycle.bin');
+     public function delete($id = null)
+     {
+         if($id != null){
+             $users = User::onlyTrashed()
+             ->where('id', $id)   
+             ->forceDelete();
+             } else {
+                 $users = User::onlyTrashed()->forceDelete();
+             }
+             return redirect()->route('recycle.bin');
             
-    //     $users  = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
-    //     return view('admin.trash', compact('user', 'users'));
-    // }
+         $users  = User::onlyTrashed()->get(); // menarik semua (all) data dari models 
+        return view('admin.trash', compact('user', 'users'));
+    }
 }

@@ -73,6 +73,10 @@ Route::middleware(['auth', 'perawat'])->group(function () {
 
     //halaman rawat inap
     Route::get('/data-perawatan', [App\Http\Controllers\PerawatController::class, 'perawatan_data'])->name('perawatan.home');
+    Route::get('/data-input/rawat-inap', [App\Http\Controllers\PerawatController::class, 'data_input_RawatInap'])->name('RawatInap.data');
+
+    Route::get('perawat/ajaxadmin/dataRawatInap/{id}', [App\Http\Controllers\PerawatController::class, 'getDataRawatInap']);
+    Route::post('/perawat/input-RawatInap', [App\Http\Controllers\PerawatController::class, 'input_rawat_inap'])->name('input.rawat_inap');
     
 });
 

@@ -9,6 +9,7 @@ use App\Models\PendataanPasien;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 use App\Models\Pemeriksaan;
+use App\Models\RawatInap;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
@@ -268,5 +269,42 @@ class PerawatController extends Controller
         $user   = Auth::user();
         $perawatan  = Pemeriksaan::where('status_dirawat', 1)->get();
         return view('perawat.data_rawat_inap', compact('user', 'perawatan'));
+    }
+
+    public function data_input_RawatInap(){
+        $user   = Auth::user();
+        $rawat_inap  = RawatInap::all();
+        return view('perawat.data_input_RawatInap', compact('user', 'rawat_inap'));
+    }
+
+    public function getDataRawatInap($id){
+        $perawatan1 = Pemeriksaan::find($id);
+
+        return response()->json($perawatan1);
+    }
+    public function input_rawat_inap(Request $req)
+    {
+        $validate = $req->validate([
+            'nama_pasien' => 'required',
+            'kelas' => 'required',
+            'nama_ruangan' => 'required',
+            'pemeriksaan_id' => 'required',
+        ]);
+
+        $RawatInap = new RawatInap();
+        $RawatInap->nama_pasien = $req->get('nama_pasien');
+        $RawatInap->kelas = $req->get('kelas');
+        $RawatInap->nama_ruangan = $req->get('nama_ruangan');
+        $RawatInap->pemeriksaan_id = $req->get('pemeriksaan_id');
+
+
+        $RawatInap->save();
+
+        $notification = array(
+            'message' => 'Data RawatInap berhasil di tambahkan',
+            'alert-type' => ('success')
+        );
+
+        return redirect()->route('perawatan.home')->with($notification);
     }
 }
